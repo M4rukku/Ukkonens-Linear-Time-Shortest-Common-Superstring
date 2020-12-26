@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class RandomStringGenerator {
 
   public static List<String> generateRandomStrings(LanguageParameters params,

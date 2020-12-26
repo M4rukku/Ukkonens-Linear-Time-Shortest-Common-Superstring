@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 /**
  * The basic Aho-Corasick supporting Trie Node - It keeps track of all transitions, failure paths
  * and can be used to create the DFA.
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
  */
 public class ACTrieNode {
 

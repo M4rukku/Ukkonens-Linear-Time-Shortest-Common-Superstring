@@ -6,9 +6,11 @@
 package trie_nodes;
 
 import alphabet.LanguageParameters;
-import trie_nodes.ACTrieNode;
-import trie_nodes.AbstractACNodeFactory;
 
+/**
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class ACTrieNodeFactory implements AbstractACNodeFactory<ACTrieNode> {
 
   /**

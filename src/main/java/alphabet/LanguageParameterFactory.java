@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class LanguageParameterFactory {
   // Static Factory Methods
   public static LanguageParameters createLanguageParametersFromAlphabet(List<Character> alphabet) {

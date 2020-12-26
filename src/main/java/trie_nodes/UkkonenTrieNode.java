@@ -8,6 +8,11 @@ package trie_nodes;
 import java.util.*;
 import alphabet.LanguageParameters;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class UkkonenTrieNode extends ACTrieNode {
 
   public int depth;

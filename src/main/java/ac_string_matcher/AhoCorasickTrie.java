@@ -10,11 +10,13 @@ import java.util.*;
 import alphabet.LanguageParameters;
 import trie_nodes.AbstractACNodeFactory;
 
-/*
- * Implementation of the AhoCorasick Algorithm
- * Takes a set of strings and builds a Trie from the given data
- * It exposes - The Trie Nodes, The Root for further processing with Ukkonen's Algorithm and a simple pattern matcher
- * You can also pass in a node that takes - language.LanguageParameters,
+/**
+ * Implementation of the AhoCorasick Algorithm Takes a set of strings and builds a Trie from the
+ * given data It exposes - The Trie Nodes, The Root for further processing with Ukkonen's Algorithm
+ * and a simple pattern matcher You can also pass in a node that takes LanguageParameters,
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
  */
 public class AhoCorasickTrie<NodeType extends ACTrieNode> {
 

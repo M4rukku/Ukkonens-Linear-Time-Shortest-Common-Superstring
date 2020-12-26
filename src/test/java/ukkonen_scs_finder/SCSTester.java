@@ -9,6 +9,11 @@ import alphabet.LanguageParameterFactory;
 import java.util.List;
 import alphabet.LanguageParameters;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class SCSTester {
 
   int totalSize = 0;

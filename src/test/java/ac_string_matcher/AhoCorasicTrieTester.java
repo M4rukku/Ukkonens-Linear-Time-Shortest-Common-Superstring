@@ -16,6 +16,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import trie_nodes.ACTrieNode;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class AhoCorasicTrieTester {
 
   //Thanks for the inspiration for this example:

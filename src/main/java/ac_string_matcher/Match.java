@@ -7,6 +7,11 @@ package ac_string_matcher;
 
 import java.util.Objects;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class Match {
 
   public String word;

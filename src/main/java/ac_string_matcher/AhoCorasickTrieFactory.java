@@ -12,6 +12,11 @@ import trie_nodes.ACTrieNode;
 import trie_nodes.ACTrieNodeFactory;
 import trie_nodes.AbstractACNodeFactory;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class AhoCorasickTrieFactory {
 
   //Default ACTNodes

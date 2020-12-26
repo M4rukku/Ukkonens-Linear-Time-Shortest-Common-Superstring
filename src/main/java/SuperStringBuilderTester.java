@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import alphabet.LanguageParameters;
 
 public class SuperStringBuilderTester {
 
@@ -26,7 +27,7 @@ public class SuperStringBuilderTester {
     }
 
     private List<String> generateTestCases(int numTestCases, int minStringLength, int maxStringLength){
-        List<Character> alphabet = params.alphabet;
+        List<Character> alphabet = params.getAlphabet();
         //Build Strings of Size 2 - 5
         List<String> testSet = new ArrayList<>(numTestCases);
 

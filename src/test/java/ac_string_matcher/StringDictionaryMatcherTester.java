@@ -15,6 +15,11 @@ import org.junit.Test;
 import trie_nodes.ACTrieNode;
 import trie_nodes.ACTrieNodeFactory;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class StringDictionaryMatcherTester {
 
   @Test

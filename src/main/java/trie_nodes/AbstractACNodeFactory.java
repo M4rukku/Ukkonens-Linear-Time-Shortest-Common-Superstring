@@ -15,6 +15,9 @@ import alphabet.LanguageParameters;
  * <p>
  * T represents the NodeType that extends ACNodeFactories.AhoCorasickTrieNode - used to add
  * functionality to the string matcher
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
  */
 public interface AbstractACNodeFactory<T extends ACTrieNode> {
 

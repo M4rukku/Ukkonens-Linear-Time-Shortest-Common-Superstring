@@ -15,14 +15,17 @@ import java.util.stream.Collectors;
 import alphabet.LanguageParameters;
 import trie_nodes.UkkonenTrieNodeFactory;
 
-/*
-An implementation of Esko Ukkonen's linear time algorithm for finding approximate shortest common
-superstrings. It tries to find the longest Hamiltonian Path in the weighted overlap graph of our
-keys via a greedy heuristic. This path corresponds to an approximate SCS. We compute the greedy
-heuristic fast using the AhoCorasick String Matcher.
-
-The algorithm is described in detail here: https://link.springer.com/article/10.1007/BF01840391.
- */
+/**
+ * An implementation of Esko Ukkonen's linear time algorithm for finding approximate shortest common
+ * superstrings. It tries to find the longest Hamiltonian Path in the weighted overlap graph of our
+ * keys via a greedy heuristic. This path corresponds to an approximate SCS. We compute the greedy
+ * heuristic fast using the AhoCorasick String Matcher.
+ * <p>
+ * The algorithm is described in detail here: https://link.springer.com/article/10.1007/BF01840391.
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ **/
 public class UkkonensSCSFinder {
 
   UkkonenTrieNode rootNode;

@@ -10,7 +10,10 @@ import java.util.function.Function;
 
 /*
  * Stores global parameters needed in both ac_string_matcher.AhoCorasick and Ukkonen's Algorithm
- * Can be sent to them via dependency injection
+ * Can be sent to them via dependency injection.
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
  */
 public class LanguageParameters {
 

@@ -14,7 +14,11 @@ import trie_nodes.AbstractACNodeFactory;
 //* A quick and dirty pythonesque duck typing factory -
 // It will construct something that extends AhoCorasiclTrieNode, if it implements the correct constructor interface
 // language.LanguageParameters, boolean, char
-// */
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class ClassTypeNodeFactory<T extends ACTrieNode> implements
     AbstractACNodeFactory<T> {
 

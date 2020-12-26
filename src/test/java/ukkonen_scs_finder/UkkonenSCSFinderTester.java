@@ -11,6 +11,11 @@ import alphabet.LanguageParameterFactory;
 import java.util.List;
 import org.junit.Test;
 
+/**
+ *
+ * @author : Markus Walder
+ * @since : 26.12.2020, Sa.
+ */
 public class UkkonenSCSFinderTester {
 
   @Test

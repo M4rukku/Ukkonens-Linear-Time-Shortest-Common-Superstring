@@ -1,10 +1,10 @@
-package ukkonen_tester;
+package ukkonen_scs_finder;
 
+import alphabet.LanguageParameterFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import alphabet.LanguageParameters;
-import ukkonen_scs_finder.UkkonensSCSFinder;
 
 public class SuperStringBuilderTester {
 
@@ -53,10 +53,11 @@ public class SuperStringBuilderTester {
         UkkonensSCSFinder builder = UkkonensSCSFinder.createFromKeys(tester.testKeys);
        tester.evaluateTest(builder.getSCS());
     }
+
     //Uses Default Language Parameter
     public static void handleTestCase(int numTestCases, int minStringLength, int maxStringLength){
         SuperStringBuilderTester tester = new SuperStringBuilderTester(500,
-                LanguageParameters.defaultParameter, minStringLength, maxStringLength);
+                LanguageParameterFactory.defaultParameter, minStringLength, maxStringLength);
         UkkonensSCSFinder builder = UkkonensSCSFinder.createFromKeys(tester.testKeys);
        tester.evaluateTest(builder.getSCS());
     }

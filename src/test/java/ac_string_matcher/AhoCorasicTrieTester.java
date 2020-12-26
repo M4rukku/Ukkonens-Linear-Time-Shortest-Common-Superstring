@@ -115,4 +115,4 @@ public class AhoCorasicTrieTester {
     assertEquals(new HashSet<>(potatState.getAllPossibleDFATransitions()),
         new HashSet<>(List.of(tattState, thState, taState, potatoState, root, pState)));
   }
-}b
+}

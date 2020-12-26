@@ -9,28 +9,26 @@ import java.util.stream.Collectors;
 import alphabet.LanguageParameters;
 import trie_nodes.UkkonenTrieNodeFactory;
 
-public class UkkonenSuperstringFinder {
+public class UkkonensSCSFinder {
 
   UkkonenTrieNode rootNode;
   UkkonenTrieNode firstNodeInReverseBFSOrder;
   List<UkkonenTrieNode> allNodes;
 
+  private List<String> keys;
   List<UkkonenTrieNode> stringIndexToEndNodes;
   Map<UkkonenTrieNode, Integer> endNodesToStringIndex;
 
   //Keep track of Hamilton Path Building
-  List<Boolean> forbidden;
-  List<Edge<Integer, Integer>> hamiltonPath;
-  List<Integer> FIRST;
-  List<Integer> LAST;
+  private List<Boolean> forbidden;
+  private List<Edge<Integer, Integer>> hamiltonPath;
+  private List<Integer> FIRST;
+  private List<Integer> LAST;
 
-  LanguageParameters parameters;
-  List<String> keys;
-
-  UkkonenSuperstringFinder(List<String> keys, LanguageParameters params) {
-    this.parameters = params;
+  private UkkonensSCSFinder(List<String> keys, LanguageParameters params) {
     this.keys = keys;
-//        Inject the ACNodes.UkkonenTrieNode instead of the ac_string_matcher.AhoCorasick ones to get full control of the type of nodes constructed
+    //Inject the UkkonenTrieNodeFactory instead of the ACTrieNode
+    // ones to get full control of the type of nodes constructed
 
     AhoCorasickTrie<UkkonenTrieNode> newTrie =
         AhoCorasickTrieFactory
@@ -38,23 +36,18 @@ public class UkkonenSuperstringFinder {
                 keys, params, new UkkonenTrieNodeFactory());
 
     allNodes = newTrie.trieNodes;
-    rootNode = allNodes.get(0);
+    rootNode = newTrie.rootNode;
 
     hamiltonPath = new ArrayList<>();
     stringIndexToEndNodes = new ArrayList<>(keys.size());
     forbidden = new ArrayList<>(keys.size());
     FIRST = new ArrayList<>(keys.size());
     LAST = new ArrayList<>(keys.size());
+
     for (int i = 0; i < keys.size(); i++) {
       stringIndexToEndNodes.add(null);
-    }
-    for (int i = 0; i < keys.size(); i++) {
       forbidden.add(false);
-    }
-    for (int i = 0; i < keys.size(); i++) {
       FIRST.add(-1);
-    }
-    for (int i = 0; i < keys.size(); i++) {
       LAST.add(-1);
     }
     endNodesToStringIndex = new HashMap<>();
@@ -63,21 +56,21 @@ public class UkkonenSuperstringFinder {
     buildHamiltonPath();
   }
 
-  public static UkkonenSuperstringFinder createFromKeys(List<String> keys) {
-    return new UkkonenSuperstringFinder(keys,
+  public static UkkonensSCSFinder createFromKeys(List<String> keys) {
+    return new UkkonensSCSFinder(keys,
         LanguageParameters.createLanguageParametersFromNames(keys));
   }
 
-  public static UkkonenSuperstringFinder createFromParams(List<String> keys,
+  public static UkkonensSCSFinder createFromParams(List<String> keys,
       LanguageParameters params) {
-    return new UkkonenSuperstringFinder(keys, params);
+    return new UkkonensSCSFinder(keys, params);
   }
 
   private void preprocessTrie() {
-//        endNodesToStringIndex.put(rootNode, -1); TODO I think it is unneccessary
+    endNodesToStringIndex.put(rootNode, -1); //TODO Check
     for (int i = 0; i < keys.size(); i++) {
       UkkonenTrieNode state = rootNode;
-//            rootNode.supportedKeys.add(i);
+      rootNode.supportedKeys.add(i);
 
       char[] currentString = keys.get(i).toCharArray();
 
@@ -166,7 +159,7 @@ public class UkkonenSuperstringFinder {
     }
   }
 
-  public String getSuperString() {
+  public String getSCS() {
     Map<Integer, Integer> edgeOccurrences = new HashMap<>();
     hamiltonPath.forEach(edge ->
     {
@@ -232,7 +225,7 @@ public class UkkonenSuperstringFinder {
   public static void main(String[] args) {
     List<String> tests = List.of("DD", "B99", "aac", "caDcD", "acaB",
         "D9");//List.of("AKI", "ELE", "KIKIELE", "LEATA", "KIRA", "LEA");
-    UkkonenSuperstringFinder builder = UkkonenSuperstringFinder.createFromKeys(tests);
-    System.out.println(builder.getSuperString());
+    UkkonensSCSFinder builder = UkkonensSCSFinder.createFromKeys(tests);
+    System.out.println(builder.getSCS());
   }
 }

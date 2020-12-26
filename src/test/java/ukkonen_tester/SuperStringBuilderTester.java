@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import alphabet.LanguageParameters;
-import ukkonen_scs_finder.UkkonenSuperstringFinder;
+import ukkonen_scs_finder.UkkonensSCSFinder;
 
 public class SuperStringBuilderTester {
 
@@ -50,15 +50,15 @@ public class SuperStringBuilderTester {
 
     public static void handleTestCase(int numTestCases, LanguageParameters params, int minStringLength, int maxStringLength){
         SuperStringBuilderTester tester = new SuperStringBuilderTester(500, params, minStringLength, maxStringLength);
-        UkkonenSuperstringFinder builder = UkkonenSuperstringFinder.createFromKeys(tester.testKeys);
-       tester.evaluateTest(builder.getSuperString());
+        UkkonensSCSFinder builder = UkkonensSCSFinder.createFromKeys(tester.testKeys);
+       tester.evaluateTest(builder.getSCS());
     }
     //Uses Default Language Parameter
     public static void handleTestCase(int numTestCases, int minStringLength, int maxStringLength){
         SuperStringBuilderTester tester = new SuperStringBuilderTester(500,
                 LanguageParameters.defaultParameter, minStringLength, maxStringLength);
-        UkkonenSuperstringFinder builder = UkkonenSuperstringFinder.createFromKeys(tester.testKeys);
-       tester.evaluateTest(builder.getSuperString());
+        UkkonensSCSFinder builder = UkkonensSCSFinder.createFromKeys(tester.testKeys);
+       tester.evaluateTest(builder.getSCS());
     }
 
     public static void main(String[] args) {

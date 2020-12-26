@@ -5,7 +5,6 @@ import java.util.List;
 import trie_nodes.ACTrieNode;
 import trie_nodes.ACTrieNodeFactory;
 import trie_nodes.AbstractACNodeFactory;
-import trie_nodes.ClassTypeNodeFactory;
 
 public class AhoCorasickTrieFactory {
 
@@ -13,12 +12,6 @@ public class AhoCorasickTrieFactory {
   public static AhoCorasickTrie<ACTrieNode> createAhoCorasickTrieFromParams(List<String> keys,
       LanguageParameters parameters) {
     return new AhoCorasickTrie<>(keys, parameters, new ACTrieNodeFactory());
-  }
-
-  public static AhoCorasickTrie<ACTrieNode> getAhoCorasickTrieFromKeys(List<String> keys) {
-    return new AhoCorasickTrie<>(keys,
-        LanguageParameters.createLanguageParametersFromNames(keys),
-        new ACTrieNodeFactory());
   }
 
   //Custom Class Nodes

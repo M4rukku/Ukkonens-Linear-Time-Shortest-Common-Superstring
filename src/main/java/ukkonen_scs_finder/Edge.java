@@ -1,3 +1,5 @@
+package ukkonen_scs_finder;
+
 public class Edge<T, E> {
     T fst;
     T snd;

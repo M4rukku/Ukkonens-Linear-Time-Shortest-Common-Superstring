@@ -1,7 +1,10 @@
+package ukkonen_tester;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import alphabet.LanguageParameters;
+import ukkonen_scs_finder.UkkonenSuperstringFinder;
 
 public class SuperStringBuilderTester {
 

@@ -1,3 +1,5 @@
+package ukkonen_scs_finder;
+
 import ac_string_matcher.AhoCorasickTrie;
 import ac_string_matcher.AhoCorasickTrieFactory;
 import java.util.Map.Entry;

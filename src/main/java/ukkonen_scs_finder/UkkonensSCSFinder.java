@@ -2,6 +2,7 @@ package ukkonen_scs_finder;
 
 import ac_string_matcher.AhoCorasickTrie;
 import ac_string_matcher.AhoCorasickTrieFactory;
+import alphabet.LanguageParameterFactory;
 import java.util.Map.Entry;
 import trie_nodes.UkkonenTrieNode;
 import java.util.*;
@@ -58,7 +59,7 @@ public class UkkonensSCSFinder {
 
   public static UkkonensSCSFinder createFromKeys(List<String> keys) {
     return new UkkonensSCSFinder(keys,
-        LanguageParameters.createLanguageParametersFromNames(keys));
+        LanguageParameterFactory.createLanguageParametersFromKeys(keys));
   }
 
   public static UkkonensSCSFinder createFromParams(List<String> keys,

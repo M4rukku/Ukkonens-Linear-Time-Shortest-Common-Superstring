@@ -3,6 +3,8 @@ package trie_nodes;
 import alphabet.LanguageParameters;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 /**
@@ -26,11 +28,11 @@ public class ACTrieNode {
     this.parameters = parameters;
 
     this.successorNodes = new ArrayList<>(alphabetSize);
-    this.transitions = new ArrayList<>(alphabetSize);
+    this.dfaTransitions = new ArrayList<>(alphabetSize);
 
     for (int i = 0; i < alphabetSize; i++) {
       successorNodes.add(null);
-      transitions.add(null);
+      dfaTransitions.add(null);
     }
 
     this.isEndOfWord = isEndOfWord;
@@ -57,14 +59,18 @@ public class ACTrieNode {
 
   //DFS STUFF
 
-  private final List<ACTrieNode> transitions;
+  private List<ACTrieNode> dfaTransitions;
 
-  public ACTrieNode getTransitions(char input) {
-    return transitions.get(parameters.map(input));
+  public ACTrieNode getDFATransition(char input) {
+    return dfaTransitions.get(parameters.map(input));
   }
 
-  public void setTransitions(char input, ACTrieNode node) {
-    transitions.set(parameters.map(input), node);
+  public void setDFATransition(char input, ACTrieNode node) {
+    dfaTransitions.set(parameters.map(input), node);
+  }
+
+  public List<ACTrieNode> getAllPossibleDFATransitions(){
+    return dfaTransitions;
   }
 
   //Utility method that says whether node is a leaf in the ac_string_matcher.AhoCorasick Trie
@@ -91,9 +97,5 @@ public class ACTrieNode {
 
   public List<ACTrieNode> getSuccessorNodes() {
     return successorNodes;
-  }
-
-  public void setSuccessorNodes(List<ACTrieNode> successorNodes) {
-    this.successorNodes = successorNodes;
   }
 }

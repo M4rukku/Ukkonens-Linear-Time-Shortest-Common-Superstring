@@ -2,9 +2,7 @@ package ac_string_matcher;
 
 import alphabet.LanguageParameters;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import trie_nodes.ACTrieNode;
 import trie_nodes.ACTrieNodeFactory;
 import trie_nodes.AbstractACNodeFactory;
@@ -39,7 +37,7 @@ public class StringDictionaryMatcher<T extends ACTrieNode> {
     char[] charArray = text.toCharArray();
     for (int i = 0; i < charArray.length; i++) {
       char c = charArray[i];
-      currentNode = currentNode.getTransitions(c);
+      currentNode = currentNode.getDFATransition(c);
 
       for (String output : currentNode.output) {
         returnList.add(new Match(output, i - output.length(), i));

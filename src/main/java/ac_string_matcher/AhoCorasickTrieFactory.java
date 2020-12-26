@@ -1,5 +1,6 @@
 package ac_string_matcher;
 
+import alphabet.LanguageParameterFactory;
 import alphabet.LanguageParameters;
 import java.util.List;
 import trie_nodes.ACTrieNode;
@@ -24,7 +25,8 @@ public class AhoCorasickTrieFactory {
   public static <T extends ACTrieNode> AhoCorasickTrie<T> getAhoCorasickTrieFromKeysWithNodeFactory(
       List<String> keys, AbstractACNodeFactory<T> factory) {
 
-    return new AhoCorasickTrie<>(keys, LanguageParameters.createLanguageParametersFromNames(keys),
+    return new AhoCorasickTrie<>(keys,
+        LanguageParameterFactory.createLanguageParametersFromKeys(keys),
         factory);
   }
 }

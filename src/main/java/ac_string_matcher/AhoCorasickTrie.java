@@ -82,8 +82,8 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
   }
 
   private void calculateFailureFunction() {
-    rootNode.setFail(rootNode);
 
+    rootNode.setFail(rootNode);
     Deque<ACTrieNode> bfsQueue = new ArrayDeque<>();
 
     for (ACTrieNode child : rootNode.getSuccessorNodes()) {
@@ -121,7 +121,7 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
     Deque<ACTrieNode> bfsQueue = new ArrayDeque<>();
 
     for (char c : parameters.getAlphabet()) {
-      rootNode.setTransitions(c, rootNode.getNextNode(c));
+      rootNode.setDFATransition(c, rootNode.getNextNode(c));
       if (rootNode.getNextNode(c) != rootNode) {
         bfsQueue.add(rootNode.getNextNode(c));
       }
@@ -132,9 +132,9 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
       for (char c : parameters.getAlphabet()) {
         if (curNode.getNextNode(c) != null) {
           bfsQueue.add(curNode.getNextNode(c));
-          curNode.setTransitions(c, curNode.getNextNode(c));
+          curNode.setDFATransition(c, curNode.getNextNode(c));
         } else {
-          curNode.setTransitions(c, curNode.getFail().getTransitions(c));
+          curNode.setDFATransition(c, curNode.getFail().getDFATransition(c));
         }
       }
     }

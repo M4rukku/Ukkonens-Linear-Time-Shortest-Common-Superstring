@@ -40,7 +40,7 @@ public class StringDictionaryMatcher<T extends ACTrieNode> {
       currentNode = currentNode.getDFATransition(c);
 
       for (String output : currentNode.output) {
-        returnList.add(new Match(output, i - output.length(), i));
+        returnList.add(new Match(output, i + 1 - output.length(), i));
       }
     }
 

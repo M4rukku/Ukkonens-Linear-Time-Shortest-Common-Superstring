@@ -35,9 +35,6 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
     preprocessTrie();
   }
 
-
-
-
   private void preprocessTrie() {
     buildSuccessorFunction(keys);
     calculateFailureFunction();
@@ -143,23 +140,11 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
     }
   }
 
-  public Set<String> patternMatch(String text) {
-    ACTrieNode currentNode = rootNode;
-    Set<String> returnSet = new HashSet<>();
-
-    for (char c : text.toCharArray()) {
-      currentNode = currentNode.getTransitions(c);
-      returnSet.addAll(currentNode.output);
-    }
-
-    return returnSet;
-  }
-
   public static void main(String[] args) {
 //        ac_string_matcher.AhoCorasick trie = createAhoCorasickTrieFromParams(List.of("hello", "world", "is", "leiwand"),
-    AhoCorasickTrie<ACTrieNode> trie = AhoCorasickTrieFactory.getAhoCorasickTrieFromKeys(
-        List.of("DD", "B99", "aac", "caDcD", "acaB", "D9"));
-//                language.LanguageParameters.defaultParameter);
-    System.out.println(trie.patternMatch("sjkldfhelloalksdjis"));
+//    AhoCorasickTrie<ACTrieNode> trie = AhoCorasickTrieFactory.getAhoCorasickTrieFromKeys(
+//        List.of("DD", "B99", "aac", "caDcD", "acaB", "D9"));
+////                language.LanguageParameters.defaultParameter);
+//    System.out.println(trie.patternMatch("sjkldfhelloalksdjis"));
   }
 }

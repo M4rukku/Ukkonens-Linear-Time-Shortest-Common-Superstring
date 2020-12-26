@@ -1,3 +1,8 @@
+/*
+ *  Copyright (c) MIT License
+ *  2020, Markus Walder (https://github.com/M4rukku)
+ */
+
 package trie_nodes;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

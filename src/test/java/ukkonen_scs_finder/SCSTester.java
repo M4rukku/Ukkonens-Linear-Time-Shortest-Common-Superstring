@@ -1,9 +1,13 @@
+/*
+ *  Copyright (c) MIT License
+ *  2020, Markus Walder (https://github.com/M4rukku)
+ */
+
 package ukkonen_scs_finder;
 
 import alphabet.LanguageParameterFactory;
 import java.util.List;
 import alphabet.LanguageParameters;
-import utilities.RandomStringGenerator;
 
 public class SCSTester {
 
@@ -24,7 +28,7 @@ public class SCSTester {
     System.out.println("Compression factor is: " + (double) totalSize / (double) result.length());
     System.out
         .println("Points are: " + (double) (totalSize - result.length()) / (double) totalSize);
-
+    System.out.println();
     for (String key : testKeys) {
       if (!result.contains(key)) {
         System.out.println("Test failed for string - " + result);

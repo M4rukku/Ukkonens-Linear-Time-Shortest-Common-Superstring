@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  */
 public class ACTrieNode {
 
-  protected LanguageParameters parameters;
+  public LanguageParameters parameters;
   protected List<ACTrieNode> successorNodes; //Null Represents Fail
   protected ACTrieNode fail;
 

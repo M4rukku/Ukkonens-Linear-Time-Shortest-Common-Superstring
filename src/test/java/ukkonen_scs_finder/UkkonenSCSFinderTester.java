@@ -5,11 +5,16 @@
 
 package ukkonen_scs_finder;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import alphabet.LanguageParameterFactory;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.junit.Test;
+import trie_nodes.UkkonenTrieNode;
 
 /**
  *
@@ -21,16 +26,36 @@ public class UkkonenSCSFinderTester {
   @Test
   public void algorithm_finds_valid_superstring() {
     assertTrue(
-        SCSTester.testRandomlyGeneratedSCS(500, 5, 12));
-
-    assertTrue(
-        SCSTester.testRandomlyGeneratedSCS(1500, 5, 12));
+        SCSTester.testRandomlyGeneratedSCS(5000, 5, 12));
   }
 
   @Test
-  public void test(){
-    List<String> test = List.of("her", "him", "she", "herself", "forever", "evermore");
-    UkkonensSCSFinder finder = UkkonensSCSFinder.createFromParams(test, LanguageParameterFactory.defaultParameter);
-    System.out.println(finder.getSCS());
+  public void depth_and_supporters_are_correct(){
+    //ARRANGE
+    List<String> keys = List.of("aki", "ele", "kiki", "kira", "lea");
+    UkkonensSCSFinder finder = UkkonensSCSFinder.createFromParams(keys, LanguageParameterFactory.defaultParameter);
+
+    UkkonenTrieNode root = finder.rootNode;
+    UkkonenTrieNode kiNode = root.getNextNode('k').getNextNode('i');
+    //ASSERT
+    //The supporters of KI should be kira and kiki
+    assertEquals(new HashSet<>(kiNode.supportedKeys), Set.of(2, 3));
+    //The supporters of root should be 0, 1, 2, 3, 4
+    assertEquals(new HashSet<>(root.supportedKeys), Set.of(1, 2, 3, 4, 0));
+
+    //Depth of ki should be 2
+    assertEquals(2, kiNode.depth);
+    assertEquals(0, root.depth);
   }
+
+  @Test
+  public void created_test_string_is_correctly(){
+    //ARRANGE
+    List<String> keys = List.of("aki", "ele", "kiki", "kira", "lea");
+    UkkonensSCSFinder finder = UkkonensSCSFinder.createFromParams(keys, LanguageParameterFactory.defaultParameter);
+
+    //ACT
+    assertTrue(Set.of("eleakirakiki", "eleakikira").contains(finder.getSCS()));
+  }
+
 }

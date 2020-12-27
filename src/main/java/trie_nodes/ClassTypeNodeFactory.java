@@ -5,16 +5,17 @@
 
 package trie_nodes;
 
+import alphabet.LanguageParameters;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import trie_nodes.ACTrieNode;
-import alphabet.LanguageParameters;
 import trie_nodes.AbstractACNodeFactory;
 
-//* A quick and dirty pythonesque duck typing factory -
-// It will construct something that extends AhoCorasiclTrieNode, if it implements the correct constructor interface
-// language.LanguageParameters, boolean, char
 /**
+ * A very powerful factory that can create any type of TrieNode which extends ACTrieNode using
+ * reflection. One needs to pass in the class of the tree node one wants to create in the
+ * constructor and then the factory will generate the node iff, the node constructor is of the form
+ * [LanguageParameters, Boolean, Character].
  *
  * @author : Markus Walder
  * @since : 26.12.2020, Sa.
@@ -24,27 +25,33 @@ public class ClassTypeNodeFactory<T extends ACTrieNode> implements
 
   private Constructor<T> nodeConstructor;
 
-  public ClassTypeNodeFactory(Class<T> nodeType) {
+
+  /**
+   * The Constructor takes a class which needs to have a constructor of the form
+   * [LanguageParameters, Boolean, Character], otherwise it will throw a {@link
+   * NoSuchMethodException}.
+   *
+   * @param nodeType Class of the NodeType that we want to generate
+   * @throws NoSuchMethodException whenever the class does not have the right Constructor
+   */
+  public ClassTypeNodeFactory(Class<T> nodeType) throws NoSuchMethodException {
     Class<?>[] classes = new Class[3];
     classes[0] = LanguageParameters.class;
     classes[1] = boolean.class;
     classes[2] = char.class;
-    try {
-      nodeConstructor = nodeType.getDeclaredConstructor(classes);
-    } catch (NoSuchMethodException e) {
-      throw new RuntimeException(
-          "The class passed to NodeFactory does not implement the right constructor protocol", e);
-    }
+
+    nodeConstructor = nodeType.getDeclaredConstructor(classes);
   }
 
   /**
    * A simple factory method that takes a set of default parameters and then returns a new Suffix
-   * Trie Node based on it.
+   * Trie Node of a custom type based on it.
    *
    * @param parameters  The {@link LanguageParameters} that define our underlying Alphabet
-   * @param isEndOfWord Indicates whether this Suffix Trie Node represents the end of a word
+   * @param isEndOfWord Boolean - Indicates whether this Suffix Trie Node represents the end of a
+   *                    word
    * @param parentChar  Character - that tells us the character of our parent
-   * @return Returns a new Trie Node
+   * @return Returns a new Trie Node based on the nodeType passed to the constructor
    */
   @Override
   public T createFromDefaultValues(

@@ -8,8 +8,6 @@ package trie_nodes;
 import alphabet.LanguageParameters;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 /**
@@ -25,7 +23,7 @@ public class ACTrieNode {
   protected List<ACTrieNode> successorNodes; //Null Represents Fail
   protected ACTrieNode fail;
 
-  public boolean isEndOfWord = false;
+  public boolean isEndOfWord;
   public char parentChar;
 
   public List<String> output = new ArrayList<>();

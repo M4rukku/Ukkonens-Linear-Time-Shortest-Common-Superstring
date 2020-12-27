@@ -8,6 +8,8 @@ package trie_nodes;
 import alphabet.LanguageParameters;
 
 /**
+ * The default ACTrieNodeFactory which generates standard {@link ACTrieNode}s.
+ *
  * @author : Markus Walder
  * @since : 26.12.2020, Sa.
  */
@@ -18,8 +20,9 @@ public class ACTrieNodeFactory implements AbstractACNodeFactory<ACTrieNode> {
    * ACTrieNode} to the caller. This is the most basic (default Factory).
    *
    * @param parameters  The {@link LanguageParameters} that define our underlying Alphabet
-   * @param isEndOfWord Indicates whether this Suffix Trie Node represents the end of a word
-   * @param parentChar  Character - that tells us the character of our parent
+   * @param isEndOfWord Boolean - Indicates whether this Suffix Trie Node represents the end of a
+   *                    word
+   * @param parentChar  Character - tells us which character leads to this node from the parent
    * @return Returns a new basic {@link ACTrieNode}
    */
   @Override

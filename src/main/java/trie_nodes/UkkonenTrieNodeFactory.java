@@ -12,6 +12,7 @@ import trie_nodes.UkkonenTrieNode;
 /**
  * Creates {@link UkkonenTrieNode}s, which support the implementation details needed for Ukkonens
  * Linear Time SCS Finder.
+ *
  * @author : Markus Walder
  * @since : 26.12.2020, Sa.
  */
@@ -22,8 +23,9 @@ public class UkkonenTrieNodeFactory implements AbstractACNodeFactory<UkkonenTrie
    * Trie Node supporting Ukkonens' Algorithm based on it.
    *
    * @param parameters  The {@link LanguageParameters} that define our underlying Alphabet
-   * @param isEndOfWord Indicates whether this Suffix Trie Node represents the end of a word
-   * @param parentChar  Character - that tells us the character of our parent
+   * @param isEndOfWord Boolean -Indicates whether this Suffix Trie Node represents the end of a
+   *                    word
+   * @param parentChar  Character - tells us which character leads to this node from the parent
    * @return Returns a new {@link UkkonenTrieNode} from the given Parameters
    */
   @Override

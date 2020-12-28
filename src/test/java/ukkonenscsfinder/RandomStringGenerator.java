@@ -11,13 +11,14 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Statically generates lists of random strings given an alphabet for use in testing..
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
-public class RandomStringGenerator {
+class RandomStringGenerator {
 
-  public static List<String> generateRandomStrings(LanguageParameter params,
+  static List<String> generateRandomStrings(LanguageParameter params,
       int numStringsToGenerate, int minStringLength, int maxStringLength) {
 
     List<Character> alphabet = params.getAlphabet();

@@ -59,7 +59,7 @@ public class ACTrieNode {
    * does not handle any transitions to the failure node.
    *
    * @param input Character used to determine next node
-   * @return ACTrieNode the node reachable using input or null if there is no reachable node
+   * @return ACTrieNode the node reachable using input or null if there is no reachable node.
    */
   public ACTrieNode getNextNode(char input) {
     return successorNodes.get(parameters.map(input));
@@ -103,7 +103,7 @@ public class ACTrieNode {
    * strings because it combines the transition and failure function.
    *
    * @param input Character used to determine next node
-   * @return ACTrieNode the node reachable using input or null if there is no reachable node
+   * @return ACTrieNode the node reachable using input or null if there is no reachable node.
    */
   public ACTrieNode getDFATransition(char input) {
     return dfaTransitions.get(parameters.map(input));
@@ -116,14 +116,12 @@ public class ACTrieNode {
   /**
    * Returns all reachable nodes of the DFA node.
    *
-   * @return List[ACTrieNode] the nodes reachable from this node
+   * @return List[ACTrieNode] the nodes reachable from this node.
    */
   public List<ACTrieNode> getAllPossibleDFATransitions() {
     return dfaTransitions;
   }
 
-  //Utility method that says whether node is a leaf in the ac_string_matcher.AhoCorasick Trie
-  // different from end of word!
 
   protected boolean leafComputed = false;
   protected boolean leaf = false;
@@ -131,7 +129,7 @@ public class ACTrieNode {
   /**
    * Utility method that returns whether the node is a leaf in the Aho-Corasick Trie.
    *
-   * @return Boolean is leaf in AC Graph
+   * @return Boolean - true if node is leaf in AC Graph
    */
   public boolean isLeafInAhoCorasickGraph() {
     if (leafComputed) {

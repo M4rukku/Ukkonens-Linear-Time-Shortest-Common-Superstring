@@ -23,7 +23,7 @@ public class Match {
    * Creates a new Match Object based on Parameters.
    *
    * @param word the String matched
-   * @param startPosition the position where the word occured in the text
+   * @param startPosition the position where the word occurred in the text
    * @param endPosition where the word ends in the text
    */
   public Match(String word, int startPosition, int endPosition) {

@@ -45,8 +45,8 @@ public class UkkonenTrieNode extends ACTrieNode {
    * getDFATransition. It will return null, if there is no node reachable using input. This function
    * does not handle any transitions to the failure node.
    *
-   * @param input Character used to determine next node
-   * @return UkkonenTrieNode the node reachable using input or null if there is no reachable node
+   * @param input Character used to determine next node.
+   * @return UkkonenTrieNode the node reachable using input or null if there is no reachable node.
    */
   public UkkonenTrieNode getNextNode(char input) {
     return (UkkonenTrieNode) successorNodes.get(parameters.map(input));
@@ -59,7 +59,7 @@ public class UkkonenTrieNode extends ACTrieNode {
   /**
    * Returns an iterator over all successor nodes casted to UkkonenTrieNodes.
    *
-   * @return Iterator of UkkonenTrieNodes over all successors
+   * @return Iterator[UkkonenTrieNodes] over all successors of this node .
    */
   public Iterator<UkkonenTrieNode> iterator() {
     return successorNodes.stream().map(node -> (UkkonenTrieNode) node).iterator();
@@ -70,7 +70,7 @@ public class UkkonenTrieNode extends ACTrieNode {
    * representing the longest prefix string matching the suffix of the string represented by our
    * current node.
    *
-   * @return UkkonenTrieNode the fail node
+   * @return UkkonenTrieNode the fail node.
    */
   public UkkonenTrieNode getFail() {
     return (UkkonenTrieNode) super.getFail();

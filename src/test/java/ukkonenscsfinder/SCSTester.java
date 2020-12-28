@@ -10,11 +10,15 @@ import java.util.List;
 import alphabet.LanguageParameter;
 
 /**
+ * SCSTester is a utility class to help in testing which randomly generates a lot of
+ * strings using {@link RandomStringGenerator}. It then uses {@link UkkonenSCSFinder} to generate
+ * an approximate superstring for the set of keywords and tests whether the superstring is valid
+ * (contains all keywords).
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
-public class SCSTester {
+class SCSTester {
 
   int totalSize = 0;
   List<String> testKeys;
@@ -28,11 +32,9 @@ public class SCSTester {
     testKeys.forEach(s -> totalSize += s.length());
   }
 
-  public boolean evaluateSuperstring(String result) {
+  boolean evaluateSuperstring(String result) {
     System.out.println("Tried to find SCS");
     System.out.println("Compression factor is: " + (double) totalSize / (double) result.length());
-    System.out
-        .println("Points are: " + (double) (totalSize - result.length()) / (double) totalSize);
     System.out.println();
     for (String key : testKeys) {
       if (!result.contains(key)) {
@@ -44,27 +46,23 @@ public class SCSTester {
     return true;
   }
 
-  public static boolean testRandomlyGeneratedSCS(int numTestCases, LanguageParameter params,
+  static boolean testRandomlyGeneratedSCS(int numTestCases, LanguageParameter params,
       int minStringLength, int maxStringLength) {
 
     SCSTester tester = new SCSTester(numTestCases, params, minStringLength, maxStringLength);
-    UkkonensSCSFinder builder = UkkonensSCSFinder.createFromKeys(tester.testKeys);
+    UkkonenSCSFinder builder = UkkonenSCSFinder.createFromKeys(tester.testKeys);
 
     return tester.evaluateSuperstring(builder.getSCS());
   }
 
   //Uses Default Language Parameter
-  public static boolean testRandomlyGeneratedSCS(int numTestCases, int minStringLength,
+  static boolean testRandomlyGeneratedSCS(int numTestCases, int minStringLength,
       int maxStringLength) {
 
     SCSTester tester = new SCSTester(numTestCases,
         LanguageParameterFactory.defaultParameter, minStringLength, maxStringLength);
-    UkkonensSCSFinder builder = UkkonensSCSFinder.createFromKeys(tester.testKeys);
+    UkkonenSCSFinder builder = UkkonenSCSFinder.createFromKeys(tester.testKeys);
 
     return tester.evaluateSuperstring(builder.getSCS());
-  }
-
-  public static void main(String[] args) {
-    testRandomlyGeneratedSCS(500, 2, 5);
   }
 }

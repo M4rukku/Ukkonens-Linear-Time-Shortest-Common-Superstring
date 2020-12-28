@@ -14,6 +14,12 @@ import java.util.List;
  * The basic Aho-Corasick supporting Trie Node - It keeps track of all transitions, failure paths
  * and can be used to create a DFA.
  *
+ * <p>Note on the implementation: The goto function (successorNodes) maps characters to integers to
+ * ACTrieNodes. We do this to make use of fast array access in small alphabets. It scales badly for
+ * large alphabets because we need to keep a list the size of the alphabet with each node. It would
+ * be more efficient to switch to an implementation based on HashMap[Character, Integer] in such
+ * cases.
+ *
  * @author Markus Walder
  * @since 26.12.2020, Sa.
  */

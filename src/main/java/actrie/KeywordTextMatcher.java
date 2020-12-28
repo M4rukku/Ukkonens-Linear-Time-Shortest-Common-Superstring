@@ -3,14 +3,12 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ac_string_matcher;
+package actrie;
 
 import alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.List;
-import trie_nodes.ACTrieNode;
-import trie_nodes.ACTrieNodeFactory;
-import trie_nodes.AbstractACNodeFactory;
+import trienodes.ACTrieNode;
 
 /**
  * StringDictionaryMatcher implements the basic use case of the {@link AhoCorasickTrie}. It finds
@@ -24,26 +22,26 @@ import trie_nodes.AbstractACNodeFactory;
  * @author Markus Walder
  * @since 26.12.2020, Sa.
  */
-public class StringDictionaryMatcher {
+public class KeywordTextMatcher {
 
   private AhoCorasickTrie<ACTrieNode> stringMatcher;
 
-  private StringDictionaryMatcher(LanguageParameter parameters, List<String> keywords) {
+  private KeywordTextMatcher(LanguageParameter parameters, List<String> keywords) {
     stringMatcher = AhoCorasickTrieFactory
                         .createAhoCorasickTrieFromParams(keywords, parameters);
   }
 
   /**
-   * Creates a new {@link StringDictionaryMatcher} from a {@link LanguageParameter} and the keywords
+   * Creates a new {@link KeywordTextMatcher} from a {@link LanguageParameter} and the keywords
    * we want to match.
    *
    * @param parameters the {@link LanguageParameter} we are using
    * @param keywords   the keywords we want to match with
-   * @return the new {@link StringDictionaryMatcher}
+   * @return the new {@link KeywordTextMatcher}
    */
-  public static StringDictionaryMatcher createFromParameters(LanguageParameter parameters,
+  public static KeywordTextMatcher createFromParameters(LanguageParameter parameters,
       List<String> keywords) {
-    return new StringDictionaryMatcher(parameters, keywords);
+    return new KeywordTextMatcher(parameters, keywords);
   }
 
   /**

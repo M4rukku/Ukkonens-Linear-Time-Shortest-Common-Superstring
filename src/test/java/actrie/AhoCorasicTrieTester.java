@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ac_string_matcher;
+package actrie;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,7 +14,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import trie_nodes.ACTrieNode;
+import trienodes.ACTrieNode;
 
 /**
  *

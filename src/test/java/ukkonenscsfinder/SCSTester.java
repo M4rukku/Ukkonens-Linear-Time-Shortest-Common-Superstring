@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ukkonen_scs_finder;
+package ukkonenscsfinder;
 
 import alphabet.LanguageParameterFactory;
 import java.util.List;

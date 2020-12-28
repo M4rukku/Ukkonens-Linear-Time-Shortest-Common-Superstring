@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ac_string_matcher;
+package actrie;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,15 +12,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.Test;
-import trie_nodes.ACTrieNode;
-import trie_nodes.ACTrieNodeFactory;
 
 /**
  *
  * @author : Markus Walder
  * @since : 26.12.2020, Sa.
  */
-public class StringDictionaryMatcherTester {
+public class KeywordTextMatcherTester {
 
   @Test
   public void finds_all_matches() {
@@ -39,7 +37,7 @@ public class StringDictionaryMatcherTester {
     Set<Match> expectedMatches = new HashSet<>(expectedMatchesList);
 
     //ACT
-    StringDictionaryMatcher matcher = StringDictionaryMatcher.createFromParameters(
+    KeywordTextMatcher matcher = KeywordTextMatcher.createFromParameters(
         LanguageParameterFactory.defaultParameter, dictionary);
 
     //ASSERT

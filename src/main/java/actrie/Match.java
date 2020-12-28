@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ac_string_matcher;
+package actrie;
 
 import java.util.Objects;
 

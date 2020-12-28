@@ -217,13 +217,13 @@ public class UkkonensSCSFinder {
    * This function will build the approximately longest Hamilton path using our modified AC machine.
    * How this works is best described by a quote from the aforementioned paper:
    *
-   * <p>Theorem 4 suggests how the greedy heuristics can be implemented using the AC machine. To find
-   * the pairwise overlaps in descending order, follow all failure paths starting from the states
-   * represented by the strings in R. All paths have to be followed simultaneously and the longest
-   * available overlap has to be selected at each stage. This suggests an implementation as follows.
-   * Traverse the states of the AC machine in reversed breadth-first order. At each state we have to
-   * know which of the failure paths pass through that state. Each passing path represents an
-   * overlap. Choose any overlap that is not forbidden by earlier selections.
+   * <p>Theorem 4 suggests how the greedy heuristics can be implemented using the AC machine. To
+   * find the pairwise overlaps in descending order, follow all failure paths starting from the
+   * states represented by the strings in R. All paths have to be followed simultaneously and the
+   * longest available overlap has to be selected at each stage. This suggests an implementation as
+   * follows. Traverse the states of the AC machine in reversed breadth-first order. At each state
+   * we have to know which of the failure paths pass through that state. Each passing path
+   * represents an overlap. Choose any overlap that is not forbidden by earlier selections.
    */
   private void greedilyBuildHamiltonPath() {
     for (int i = 0; i < keys.size(); i++) {

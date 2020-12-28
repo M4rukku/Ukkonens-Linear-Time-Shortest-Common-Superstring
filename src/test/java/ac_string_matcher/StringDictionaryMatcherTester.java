@@ -39,7 +39,7 @@ public class StringDictionaryMatcherTester {
     Set<Match> expectedMatches = new HashSet<>(expectedMatchesList);
 
     //ACT
-    StringDictionaryMatcher<ACTrieNode> matcher = StringDictionaryMatcher.createFromParameters(
+    StringDictionaryMatcher matcher = StringDictionaryMatcher.createFromParameters(
         LanguageParameterFactory.defaultParameter, dictionary);
 
     //ASSERT

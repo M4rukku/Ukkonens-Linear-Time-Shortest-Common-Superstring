@@ -5,31 +5,39 @@
 
 package ac_string_matcher;
 
-import trie_nodes.ACTrieNode;
-import java.util.*;
 import alphabet.LanguageParameter;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
+import trie_nodes.ACTrieNode;
 import trie_nodes.AbstractACNodeFactory;
 
+
 /**
- * Implementation of the AhoCorasick Algorithm Takes a set of strings and builds a Trie from the
- * given data It exposes - The Trie Nodes, The Root for further processing with Ukkonen's Algorithm
- * and a simple pattern matcher You can also pass in a node that takes LanguageParameters,
+ * Implementation of the AhoCorasickTrie Algorithm. This class takes a set of keys, a {@link
+ * LanguageParameter} and a NodeFactory and then builds the Trie + the DFA. It is built to make
+ * extension easy: We can inject different node factories and then build algorithms on the exposed
+ * list of trieNodes.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * <p>The implementation is based on the original paper: https://dl.acm.org/doi/10.1145/360825.360855
+ *
+ * @param <nodeType> nodeType is a subclass of ACTrieNode. It ensures typing works as expected.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
-public class AhoCorasickTrie<NodeType extends ACTrieNode> {
+public class AhoCorasickTrie<nodeType extends ACTrieNode> {
 
   private List<String> keys;
   private LanguageParameter parameters;
-  private AbstractACNodeFactory<NodeType> nodeConstructorFactory;
+  private AbstractACNodeFactory<nodeType> nodeConstructorFactory;
 
-  public List<NodeType> trieNodes = new ArrayList<>();
-  public NodeType rootNode;
+  public List<nodeType> trieNodes = new ArrayList<>();
+  public nodeType rootNode;
 
 
   AhoCorasickTrie(List<String> keys, LanguageParameter parameters,
-      AbstractACNodeFactory<NodeType> nodeConstructorFactory) {
+      AbstractACNodeFactory<nodeType> nodeConstructorFactory) {
     this.keys = keys;
     this.parameters = parameters;
     this.nodeConstructorFactory = nodeConstructorFactory;
@@ -39,24 +47,31 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
                         .createFromDefaultValues(parameters, false, '$');
     trieNodes.add(rootNode);
 
-    preprocessTrie();
+    createTrie();
   }
 
-  private void preprocessTrie() {
-    buildSuccessorFunction(keys);
+
+  private void createTrie() {
+    defineSuccessorFunction(keys);
     calculateFailureFunction();
     buildDFA();
   }
 
-  private void buildSuccessorFunction(List<String> keys) {
+  /**
+   * Takes the keys and creates the basic Trie based on them. It defines the successor function and
+   * basic trie node structure needed for the AC algorithm.
+   *
+   * @param keys a List of String containing the keys we want to match with later
+   */
+  private void defineSuccessorFunction(List<String> keys) {
     for (String key : keys) {
       ACTrieNode current = rootNode;
 
       int charIndex = 0;
       char[] keyChars = key.toCharArray();
 
-      while (charIndex < keyChars.length &&
-                 (current.getNextNode(keyChars[charIndex]) != null)) {
+      while (charIndex < keyChars.length
+                 && (current.getNextNode(keyChars[charIndex]) != null)) {
 
         current = current.getNextNode(keyChars[charIndex]);
         charIndex++;
@@ -67,7 +82,7 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
         char currentChar = keyChars[ind];
         boolean isLeaf = (ind == (keyChars.length - 1));
 
-        NodeType newNode = nodeConstructorFactory
+        nodeType newNode = nodeConstructorFactory
                                .createFromDefaultValues(parameters, isLeaf, currentChar);
 
         if (isLeaf) {
@@ -88,6 +103,9 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
     }
   }
 
+  /**
+   * Calculates the failure function for each node. (See Paper)
+   */
   private void calculateFailureFunction() {
 
     rootNode.setFail(rootNode);
@@ -124,6 +142,9 @@ public class AhoCorasickTrie<NodeType extends ACTrieNode> {
 
   }
 
+  /**
+   * Reduces the connections to failure nodes to a new transition function. (See Paper)
+   */
   private void buildDFA() {
     Deque<ACTrieNode> bfsQueue = new ArrayDeque<>();
 

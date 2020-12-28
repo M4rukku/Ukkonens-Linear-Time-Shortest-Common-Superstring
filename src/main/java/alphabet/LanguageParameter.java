@@ -12,8 +12,8 @@ import java.util.function.Function;
  * Stores global language parameters (alphabet characters, mapping function) needed in both
  * AhoCorasick and Ukkonen's Algorithm.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class LanguageParameter {
 

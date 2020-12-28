@@ -13,36 +13,48 @@ import trie_nodes.ACTrieNodeFactory;
 import trie_nodes.AbstractACNodeFactory;
 
 /**
+ * StringDictionaryMatcher implements the basic use case of the {@link AhoCorasickTrie}. It finds
+ * all matches of the keywords used in its construction in the text body.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * Example Usage: <br>
+ *   StringDictionaryMatcher matcher = StringDictionaryMatcher.createFromParameters(
+ *         LanguageParameterFactory.defaultParameter, dictionary); <br>
+ *   List[Match] matches = matcher.matchText(text); <br>
+ *
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
-public class StringDictionaryMatcher<T extends ACTrieNode> {
+public class StringDictionaryMatcher {
 
-  private AhoCorasickTrie<T> stringMatcher;
+  private AhoCorasickTrie<ACTrieNode> stringMatcher;
 
-  private StringDictionaryMatcher(LanguageParameter parameters, List<String> dictionary,
-      AbstractACNodeFactory<T> factory) {
+  private StringDictionaryMatcher(LanguageParameter parameters, List<String> keywords) {
     stringMatcher = AhoCorasickTrieFactory
-                        .createAhoCorasickTrieFromParamsWithNodeFactory(dictionary, parameters,
-                            factory);
-
+                        .createAhoCorasickTrieFromParams(keywords, parameters);
   }
 
-  public static StringDictionaryMatcher<ACTrieNode> createFromParameters(
-      LanguageParameter parameters,
-      List<String> dictionary) {
-    return new StringDictionaryMatcher<>(parameters, dictionary, new ACTrieNodeFactory());
+  /**
+   * Creates a new {@link StringDictionaryMatcher} from a {@link LanguageParameter} and the keywords
+   * we want to match.
+   *
+   * @param parameters the {@link LanguageParameter} we are using
+   * @param keywords   the keywords we want to match with
+   * @return the new {@link StringDictionaryMatcher}
+   */
+  public static StringDictionaryMatcher createFromParameters(LanguageParameter parameters,
+      List<String> keywords) {
+    return new StringDictionaryMatcher(parameters, keywords);
   }
 
-  public static <E extends ACTrieNode> StringDictionaryMatcher<E> createFromParametersWithCustomNodeFactory(
-      LanguageParameter parameters, List<String> dictionary, AbstractACNodeFactory<E> factory) {
-    return new StringDictionaryMatcher<>(parameters, dictionary, factory);
-  }
-
+  /**
+   * Returns all {@link Match}es of the keywords we found in the text.
+   *
+   * @param text the text body we want to search
+   * @return a list of {@link Match}es found
+   */
   public List<Match> matchText(String text) {
     ACTrieNode currentNode = stringMatcher.rootNode;
-    List<Match> returnList = new ArrayList<>();
+    List<Match> matches = new ArrayList<>();
 
     char[] charArray = text.toCharArray();
     for (int i = 0; i < charArray.length; i++) {
@@ -50,10 +62,10 @@ public class StringDictionaryMatcher<T extends ACTrieNode> {
       currentNode = currentNode.getDFATransition(c);
 
       for (String output : currentNode.output) {
-        returnList.add(new Match(output, i + 1 - output.length(), i));
+        matches.add(new Match(output, i + 1 - output.length(), i));
       }
     }
 
-    return returnList;
+    return matches;
   }
 }

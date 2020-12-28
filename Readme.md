@@ -1,4 +1,4 @@
-This is an implementation of the AhoCorasick efficient string matcher (https://dl.acm.org/doi/10.1145/360825.360855) and Ukkonens' approximate shortest common superstring finder (https://link.springer.com/article/10.1007/BF01840391).
+This is an implementation of the AhoCorasick efficient string matcher (https://dl.acm.org/doi/10.1145/360825.360855) and Ukkonens' linear time approximate shortest common superstring finder (https://link.springer.com/article/10.1007/BF01840391).
 
 Originally inspired by IMCs 32BIDS coding challenge (already finished), where I implemented the initial version, I decided to clean up and publish my code (under a MIT license).
 

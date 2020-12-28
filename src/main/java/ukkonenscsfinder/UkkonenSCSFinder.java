@@ -25,16 +25,19 @@ import trienodes.UkkonenTrieNodeFactory;
 /**
  * An implementation of Esko Ukkonen's linear time algorithm for finding approximate shortest common
  * superstrings. It tries to find the longest Hamiltonian Path in the weighted overlap graph of our
- * keyWords via a greedy heuristic. This path corresponds to an approximate SCS. We compute the greedy
- * heuristic fast using the AhoCorasick String Matcher.
+ * keyWords via a greedy heuristic. This path corresponds to an approximate SCS. We compute the
+ * greedy heuristic fast using the AhoCorasick String Matcher.
  *
- * <p>Example Usage: <br>
- * List[String] keys = List.of("aki", "ele", "kiki", "kira", "lea"); <br>UkkonenSCSFinder finder =
- * UkkonenSCSFinder.createFromKeys(keys); <br>String scs = finder.getSCS();
- *
+ * <p>Example Usage:
+ * <pre>
+ * {@code
+ *    List<String> keys = List.of("aki", "ele", "kiki", "kira", "lea");
+ *    UkkonenSCSFinder finder = UkkonenSCSFinder.createFromKeys(keys);
+ *    String scs = finder.getSCS();
+ * }
+ * </pre>
  * <p>Some Notes on the Implementation and the Algorithm:
- *
- * <p>Our AhoCorasick algorithm uses arrays to define the goto function. That means that our
+ * <br>Our AhoCorasick algorithm uses arrays to define the goto function. That means that our
  * algorithm scales badly in terms of space for large alphabets. (One can try to change ACTrieNode
  * to use Maps with defaults instead.)
  *
@@ -115,8 +118,8 @@ public class UkkonenSCSFinder {
 
   /**
    * Creates an UkkonenSCSFinder from the list of words for which we want to generate an approximate
-   * SCS. The {@link LanguageParameter} will be automatically generated from the keyWords. See {@link
-   * LanguageParameterFactory}.
+   * SCS. The {@link LanguageParameter} will be automatically generated from the keyWords. See
+   * {@link LanguageParameterFactory}.
    *
    * @param keyWords a list of strings for which we want to generate a SCS
    * @return an instance of UkkonensSCSFinder for our parameters
@@ -130,8 +133,8 @@ public class UkkonenSCSFinder {
    * Creates an UkkonenSCSFinder from the list of words for which we want to generate an approximate
    * SCS and the parameters of the underlying language.
    *
-   * @param keyWords   a list of strings for which we want to generate an SCS
-   * @param params language parameters that define the language of the words used in keyWords
+   * @param keyWords a list of strings for which we want to generate an SCS
+   * @param params   language parameters that define the language of the words used in keyWords
    * @return an instance of UkkonenSCSFinder for our parameters
    */
   public static UkkonenSCSFinder createFromParams(List<String> keyWords, LanguageParameter params) {
@@ -144,11 +147,12 @@ public class UkkonenSCSFinder {
    * Preprocesses the AC Machine to add the functionality we need for Ukkonens' algorithm. In
    * detail, it does the following:
    *
-   * <p>It calculates the depth d(s) and node supporters L(s); <br> it reduces the graph (eliminates
+   * <p>It calculates the depth d(s) and node supporters L(s); <br> it reduces the graph
+   * (eliminates
    * unneeded substrings, i.e. her when we have both her and herself) by changing
    * stringIndexToRepresentingNode;<br> it calculates the reverse bfs ordering of states and assigns
-   * each node its successor; <br>it stores the starting points of the failure paths (all string ends
-   * in the reduced graph)
+   * each node its successor; <br>it stores the starting points of the failure paths (all string
+   * ends in the reduced graph)
    */
   private void preprocessTrie() {
     // Reduces Graph, Calculates depth + supporters

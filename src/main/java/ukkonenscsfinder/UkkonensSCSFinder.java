@@ -3,11 +3,11 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ukkonen_scs_finder;
+package ukkonenscsfinder;
 
 
-import ac_string_matcher.AhoCorasickTrie;
-import ac_string_matcher.AhoCorasickTrieFactory;
+import actrie.AhoCorasickTrie;
+import actrie.AhoCorasickTrieFactory;
 import alphabet.LanguageParameterFactory;
 import alphabet.LanguageParameter;
 import java.util.ArrayDeque;
@@ -18,8 +18,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import trie_nodes.UkkonenTrieNode;
-import trie_nodes.UkkonenTrieNodeFactory;
+import trienodes.UkkonenTrieNode;
+import trienodes.UkkonenTrieNodeFactory;
 
 
 /**

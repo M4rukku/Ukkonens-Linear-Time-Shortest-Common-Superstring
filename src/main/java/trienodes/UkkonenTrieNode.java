@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package trie_nodes;
+package trienodes;
 
 import alphabet.LanguageParameter;
 import java.util.ArrayList;

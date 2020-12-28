@@ -3,13 +3,13 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ac_string_matcher;
+package actrie;
 
 import alphabet.LanguageParameter;
 import java.util.List;
-import trie_nodes.ACTrieNode;
-import trie_nodes.ACTrieNodeFactory;
-import trie_nodes.AbstractACNodeFactory;
+import trienodes.ACTrieNode;
+import trienodes.ACTrieNodeFactory;
+import trienodes.AbstractACNodeFactory;
 
 /**
  * A Factory to create AhoCorasickTries.

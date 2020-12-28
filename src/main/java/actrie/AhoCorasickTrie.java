@@ -3,15 +3,15 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ac_string_matcher;
+package actrie;
 
 import alphabet.LanguageParameter;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import trie_nodes.ACTrieNode;
-import trie_nodes.AbstractACNodeFactory;
+import trienodes.ACTrieNode;
+import trienodes.AbstractACNodeFactory;
 
 
 /**

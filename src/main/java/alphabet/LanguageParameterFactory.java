@@ -24,7 +24,7 @@ public class LanguageParameterFactory {
    * mapping function using a HashMap.
    *
    * @param alphabet List of Characters that define our language
-   * @return the created {@link LanguageParameter}.
+   * @return the created {@link LanguageParameter}
    */
   // Static Factory Methods
   public static LanguageParameter createLanguageParametersFromAlphabet(List<Character> alphabet) {
@@ -48,7 +48,7 @@ public class LanguageParameterFactory {
    * @param mapper   a mapping function that maps all characters in alphabet to an integer in
    *                 range(0, alphabetSize-1).
    * @param alphabet a List of Characters that defines our alphabet
-   * @return the created {@link LanguageParameter}.
+   * @return the created {@link LanguageParameter}
    */
   public static LanguageParameter createLanguageParametersFromParams(
       Function<Character, Integer> mapper, List<Character> alphabet) {

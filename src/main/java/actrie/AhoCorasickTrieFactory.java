@@ -41,7 +41,7 @@ public class AhoCorasickTrieFactory {
    *                   AhoCorasickTrie}
    * @param parameters a {@link LanguageParameter} defining the language used for the keys
    * @param factory    An implementation of {@link AbstractACNodeFactory} defining the creation of
-   *                   new nodes.
+   *                   new nodes
    * @param <T>        The node type created by the factory.
    * @return the new AhoCorasickTrie
    */

@@ -29,7 +29,7 @@ public interface AbstractACNodeFactory<T extends ACTrieNode> {
    * @param isEndOfWord Boolean - Indicates whether this Suffix Trie Node represents the end of a
    *                    word
    * @param parentChar  Character - tells us which character leads to this node from the parent
-   * @return Returns a new Trie Node.
+   * @return Returns a new Trie Node
    */
   T createFromDefaultValues(
       LanguageParameter parameters, boolean isEndOfWord, Character parentChar);

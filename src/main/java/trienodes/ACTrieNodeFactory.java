@@ -17,13 +17,13 @@ public class ACTrieNodeFactory implements AbstractACNodeFactory<ACTrieNode> {
 
   /**
    * A simple factory method that takes a set of default parameters and then returns an {@link
-   * ACTrieNode} to the caller. This is the most basic (default Factory).
+   * ACTrieNode} to the caller. This is the most basic (default) factory.
    *
-   * @param parameters  The {@link LanguageParameter} that define our underlying Alphabet.
+   * @param parameters  The {@link LanguageParameter} that define our underlying Alphabet
    * @param isEndOfWord Boolean - Indicates whether this Suffix Trie Node represents the end of a
-   *                    word.
+   *                    word
    * @param parentChar  Character - tells us which character leads to this node from the parent.
-   * @return Returns a new basic {@link ACTrieNode}.
+   * @return Returns a new basic {@link ACTrieNode}
    */
   @Override
   public ACTrieNode createFromDefaultValues(

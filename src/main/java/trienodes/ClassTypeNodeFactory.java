@@ -30,7 +30,7 @@ public class ClassTypeNodeFactory<T extends ACTrieNode> implements
    * NoSuchMethodException}.
    *
    * @param nodeType Class of the NodeType that we want to generate
-   * @throws NoSuchMethodException whenever the class does not have the right Constructor
+   * @throws NoSuchMethodException whenever the class does not have the right constructor
    */
   public ClassTypeNodeFactory(Class<T> nodeType) throws NoSuchMethodException {
     Class<?>[] classes = new Class[3];
@@ -45,10 +45,10 @@ public class ClassTypeNodeFactory<T extends ACTrieNode> implements
    * A simple factory method that takes a set of default parameters and then returns a new Suffix
    * Trie Node of a custom type based on it.
    *
-   * @param parameters  The {@link LanguageParameter} that define our underlying Alphabet
+   * @param parameters  The {@link LanguageParameter} that defines our underlying Alphabet
    * @param isEndOfWord Boolean - Indicates whether this Suffix Trie Node represents the end of a
    *                    word
-   * @param parentChar  Character - that tells us the character of our parent
+   * @param parentChar  Character - that tells us the character leading to this node
    * @return Returns a new Trie Node based on the nodeType passed to the constructor
    */
   @Override

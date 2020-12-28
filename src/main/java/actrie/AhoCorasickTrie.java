@@ -15,10 +15,10 @@ import trienodes.AbstractACNodeFactory;
 
 
 /**
- * Implementation of the AhoCorasickTrie Algorithm. This class takes a set of keys, a {@link
- * LanguageParameter} and a NodeFactory and then builds the Trie + the DFA. It is built to make
+ * Represents and builds an AhoCorasickTrie. This class takes a set of keywords, a {@link
+ * LanguageParameter} and a NodeFactory and then builds the Trie + the DFA. <br>It is built to make
  * extension easy: We can inject different node factories and then build algorithms on the exposed
- * list of trieNodes.
+ * list of trie nodes.
  *
  * <p>The implementation is based on the original paper: https://dl.acm.org/doi/10.1145/360825.360855
  *

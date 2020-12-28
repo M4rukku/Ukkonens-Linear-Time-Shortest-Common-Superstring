@@ -59,7 +59,7 @@ public class UkkonenTrieNode extends ACTrieNode {
   /**
    * Returns an iterator over all successor nodes casted to UkkonenTrieNodes.
    *
-   * @return Iterator of UkkonenTrieNodes over all successors
+   * @return Iterator[UkkonenTrieNodes] over all successors of this node
    */
   public Iterator<UkkonenTrieNode> iterator() {
     return successorNodes.stream().map(node -> (UkkonenTrieNode) node).iterator();

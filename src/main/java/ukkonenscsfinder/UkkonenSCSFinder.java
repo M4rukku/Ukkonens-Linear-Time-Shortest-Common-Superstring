@@ -25,16 +25,19 @@ import trienodes.UkkonenTrieNodeFactory;
 /**
  * An implementation of Esko Ukkonen's linear time algorithm for finding approximate shortest common
  * superstrings. It tries to find the longest Hamiltonian Path in the weighted overlap graph of our
- * keys via a greedy heuristic. This path corresponds to an approximate SCS. We compute the greedy
- * heuristic fast using the AhoCorasick String Matcher.
+ * keyWords via a greedy heuristic. This path corresponds to an approximate SCS. We compute the
+ * greedy heuristic fast using the AhoCorasick String Matcher.
  *
- * <p>Example Usage: <br>
- * List[String] keys = List.of("aki", "ele", "kiki", "kira", "lea"); <br>UkkonensSCSFinder finder =
- * UkkonensSCSFinder.createFromKeys(keys); <br>String scs = finder.getSCS();
- *
+ * <p>Example Usage:
+ * <pre>
+ * {@code
+ *    List<String> keys = List.of("aki", "ele", "kiki", "kira", "lea");
+ *    UkkonenSCSFinder finder = UkkonenSCSFinder.createFromKeys(keys);
+ *    String scs = finder.getSCS();
+ * }
+ * </pre>
  * <p>Some Notes on the Implementation and the Algorithm:
- *
- * <p>Our AhoCorasick algorithm uses arrays to define the goto function. That means that our
+ * <br>Our AhoCorasick algorithm uses arrays to define the goto function. That means that our
  * algorithm scales badly in terms of space for large alphabets. (One can try to change ACTrieNode
  * to use Maps with defaults instead.)
  *
@@ -43,17 +46,17 @@ import trienodes.UkkonenTrieNodeFactory;
  * @author Markus Walder
  * @since 26.12.2020, Sa.
  **/
-public class UkkonensSCSFinder {
+public class UkkonenSCSFinder {
 
   UkkonenTrieNode rootNode;
   UkkonenTrieNode firstNodeInReverseBFSOrder;
   List<UkkonenTrieNode> allNodes;
 
-  private List<String> keys;
+  private List<String> keyWords;
   /**
-   * stringIndexToRepresentingNode is a map between a string in keys and an UkkonenTrieNode
-   * (connected via index). A key is associated with a node whenether the node represents the end of
-   * the string and the string is contained within the REDUCED graph. This is important since we
+   * stringIndexToRepresentingNode is a map between a string in keyWords, and an UkkonenTrieNode
+   * (connected via index). A key is associated with a node whenever the node represents the end of
+   * the string, and the string is contained within the REDUCED graph. This is important since we
    * will use it to define the reduced graph in the latter parts of the algorithm.
    */
   private List<UkkonenTrieNode> stringIndexToRepresentingNode;
@@ -81,25 +84,25 @@ public class UkkonensSCSFinder {
    */
   private List<Integer> lastStringInComponent;
 
-  private UkkonensSCSFinder(List<String> keys, LanguageParameter params) {
-    this.keys = keys;
+  private UkkonenSCSFinder(List<String> keyWords, LanguageParameter params) {
+    this.keyWords = keyWords;
 
     //Inject the UkkonenTrieNodeFactory instead of the ACTrieNodeFactory
     AhoCorasickTrie<UkkonenTrieNode> newTrie =
         AhoCorasickTrieFactory
             .createAhoCorasickTrieFromParamsWithNodeFactory(
-                keys, params, new UkkonenTrieNodeFactory());
+                keyWords, params, new UkkonenTrieNodeFactory());
 
     allNodes = newTrie.trieNodes;
     rootNode = newTrie.rootNode;
 
     hamiltonPath = new ArrayList<>();
-    stringIndexToRepresentingNode = new ArrayList<>(keys.size());
-    forbidden = new ArrayList<>(keys.size());
-    firstStringInComponent = new ArrayList<>(keys.size());
-    lastStringInComponent = new ArrayList<>(keys.size());
+    stringIndexToRepresentingNode = new ArrayList<>(keyWords.size());
+    forbidden = new ArrayList<>(keyWords.size());
+    firstStringInComponent = new ArrayList<>(keyWords.size());
+    lastStringInComponent = new ArrayList<>(keyWords.size());
 
-    for (int i = 0; i < keys.size(); i++) {
+    for (int i = 0; i < keyWords.size(); i++) {
       stringIndexToRepresentingNode.add(rootNode);
       forbidden.add(false);
       firstStringInComponent.add(-1);
@@ -115,27 +118,27 @@ public class UkkonensSCSFinder {
 
   /**
    * Creates an UkkonenSCSFinder from the list of words for which we want to generate an approximate
-   * SCS. The {@link LanguageParameter} will be automatically generated from the keys. See {@link
-   * LanguageParameterFactory}.
+   * SCS. The {@link LanguageParameter} will be automatically generated from the keyWords. See
+   * {@link LanguageParameterFactory}.
    *
-   * @param keys a list of strings for which we want to generate a SCS
+   * @param keyWords a list of strings for which we want to generate a SCS
    * @return an instance of UkkonensSCSFinder for our parameters
    */
-  public static UkkonensSCSFinder createFromKeys(List<String> keys) {
-    return new UkkonensSCSFinder(keys,
-        LanguageParameterFactory.createLanguageParametersFromKeys(keys));
+  public static UkkonenSCSFinder createFromKeys(List<String> keyWords) {
+    return new UkkonenSCSFinder(keyWords,
+        LanguageParameterFactory.createLanguageParametersFromKeys(keyWords));
   }
 
   /**
    * Creates an UkkonenSCSFinder from the list of words for which we want to generate an approximate
-   * SCS and the paramters of the underlying language.
+   * SCS and the parameters of the underlying language.
    *
-   * @param keys   a list of strings for which we want to generate a SCS
-   * @param params language paramters that define the language of the words used in keys
-   * @return an instance of UkkonensSCSFinder for our parameters
+   * @param keyWords a list of strings for which we want to generate an SCS
+   * @param params   language parameters that define the language of the words used in keyWords
+   * @return an instance of UkkonenSCSFinder for our parameters
    */
-  public static UkkonensSCSFinder createFromParams(List<String> keys, LanguageParameter params) {
-    return new UkkonensSCSFinder(keys, params);
+  public static UkkonenSCSFinder createFromParams(List<String> keyWords, LanguageParameter params) {
+    return new UkkonenSCSFinder(keyWords, params);
   }
 
   //Augment AC Machine and find Trie
@@ -144,11 +147,12 @@ public class UkkonensSCSFinder {
    * Preprocesses the AC Machine to add the functionality we need for Ukkonens' algorithm. In
    * detail, it does the following:
    *
-   * <p>It calculates the depth d(s) and node supporters L(s); it reduces the graph (eliminates
+   * <p>It calculates the depth d(s) and node supporters L(s); <br> it reduces the graph
+   * (eliminates
    * unneeded substrings, i.e. her when we have both her and herself) by changing
-   * stringIndexToRepresentingNode; it calculates the reverse bfs ordering of states and assigns
-   * each nodes its successor; it stores the starting points of the failure paths (all string ends
-   * in the reduced graph)
+   * stringIndexToRepresentingNode;<br> it calculates the reverse bfs ordering of states and assigns
+   * each node its successor; <br>it stores the starting points of the failure paths (all string
+   * ends in the reduced graph)
    */
   private void preprocessTrie() {
     // Reduces Graph, Calculates depth + supporters
@@ -158,10 +162,10 @@ public class UkkonensSCSFinder {
     //Init E
     allNodes.forEach(ukkonenTrieNode -> representingNodeToStringIndex.put(ukkonenTrieNode, -1));
 
-    for (int i = 0; i < keys.size(); i++) {
+    for (int i = 0; i < keyWords.size(); i++) {
       UkkonenTrieNode state = rootNode;
       rootNode.supportedKeys.add(i);
-      char[] currentString = keys.get(i).toCharArray();
+      char[] currentString = keyWords.get(i).toCharArray();
 
       for (int j = 0; j < currentString.length; j++) {
         char c = currentString[j];
@@ -219,14 +223,14 @@ public class UkkonensSCSFinder {
    *
    * <p>Theorem 4 suggests how the greedy heuristics can be implemented using the AC machine. To
    * find the pairwise overlaps in descending order, follow all failure paths starting from the
-   * states represented by the strings in R. All paths have to be followed simultaneously and the
+   * states represented by the strings in R. All paths have to be followed simultaneously, and the
    * longest available overlap has to be selected at each stage. This suggests an implementation as
    * follows. Traverse the states of the AC machine in reversed breadth-first order. At each state
    * we have to know which of the failure paths pass through that state. Each passing path
    * represents an overlap. Choose any overlap that is not forbidden by earlier selections.
    */
   private void greedilyBuildHamiltonPath() {
-    for (int i = 0; i < keys.size(); i++) {
+    for (int i = 0; i < keyWords.size(); i++) {
       if (stringIndexToRepresentingNode.get(i) != rootNode) { //is string i part of reduced graph
         // We have not yet selected anything and the fail node is clearly on the failure path
         // starting at i
@@ -298,7 +302,7 @@ public class UkkonensSCSFinder {
       if (allEdges.containsKey(startEdge)) {
         graphComponentStrings.add(componentToString(allEdges, startEdge));
       } else { //Singular Node
-        graphComponentStrings.add(keys.get(startEdge));
+        graphComponentStrings.add(keyWords.get(startEdge));
       }
     }
 
@@ -314,7 +318,7 @@ public class UkkonensSCSFinder {
       Integer startNode) {
     StringBuilder builder = new StringBuilder();
     Edge<Integer, Integer> currentEdge = allEdges.get(startNode);
-    builder.append(keys.get(currentEdge.fst));
+    builder.append(keyWords.get(currentEdge.fst));
 
     int nextNode = startNode;
     while (true) {
@@ -323,7 +327,7 @@ public class UkkonensSCSFinder {
       if (currentEdge == null) {
         break;
       }
-      builder.append(keys.get(currentEdge.snd).substring(currentEdge.weight));
+      builder.append(keyWords.get(currentEdge.snd).substring(currentEdge.weight));
       allEdges.remove(nextNode);
       nextNode = currentEdge.snd;
     }

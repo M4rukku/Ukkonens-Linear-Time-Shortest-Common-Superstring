@@ -16,9 +16,10 @@ import org.junit.Test;
 import trienodes.UkkonenTrieNode;
 
 /**
+ * Tests {@link UkkonenSCSFinder} for any problems.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class UkkonenSCSFinderTester {
 
@@ -32,7 +33,7 @@ public class UkkonenSCSFinderTester {
   public void depth_and_supporters_are_correct(){
     //ARRANGE
     List<String> keys = List.of("aki", "ele", "kiki", "kira", "lea");
-    UkkonensSCSFinder finder = UkkonensSCSFinder.createFromParams(keys, LanguageParameterFactory.defaultParameter);
+    UkkonenSCSFinder finder = UkkonenSCSFinder.createFromParams(keys, LanguageParameterFactory.defaultParameter);
 
     UkkonenTrieNode root = finder.rootNode;
     UkkonenTrieNode kiNode = root.getNextNode('k').getNextNode('i');
@@ -51,7 +52,7 @@ public class UkkonenSCSFinderTester {
   public void created_test_string_is_correctly(){
     //ARRANGE
     List<String> keys = List.of("aki", "ele", "kiki", "kira", "lea");
-    UkkonensSCSFinder finder = UkkonensSCSFinder.createFromParams(keys, LanguageParameterFactory.defaultParameter);
+    UkkonenSCSFinder finder = UkkonenSCSFinder.createFromParams(keys, LanguageParameterFactory.defaultParameter);
 
     //ACT
     assertTrue(Set.of("eleakirakiki", "eleakikira").contains(finder.getSCS()));

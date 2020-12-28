@@ -14,11 +14,14 @@ import trienodes.ACTrieNode;
  * StringDictionaryMatcher implements the basic use case of the {@link AhoCorasickTrie}. It finds
  * all matches of the keywords used in its construction in the text body.
  *
- * Example Usage: <br>
+ * <p>Example Usage:
+ * <pre>
+ *   {@code
  *   StringDictionaryMatcher matcher = StringDictionaryMatcher.createFromParameters(
- *         LanguageParameterFactory.defaultParameter, dictionary); <br>
- *   List[Match] matches = matcher.matchText(text); <br>
- *
+ *         LanguageParameterFactory.defaultParameter, dictionary);
+ *   List<Match> matches = matcher.matchText(text);
+ *   }
+ *</pre>
  * @author Markus Walder
  * @since 26.12.2020, Sa.
  */
@@ -47,7 +50,7 @@ public class KeywordTextMatcher {
   /**
    * Returns all {@link Match}es of the keywords we found in the text.
    *
-   * @param text the text body we want to search
+   * @param text String - the text body we want to search
    * @return a list of {@link Match}es found
    */
   public List<Match> matchText(String text) {

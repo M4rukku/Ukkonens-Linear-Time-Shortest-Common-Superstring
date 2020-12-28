@@ -23,8 +23,8 @@ public class LanguageParameterFactory {
    * Static factory method that creates a language based on the alphabet alone. It will generate a
    * mapping function using a HashMap.
    *
-   * @param alphabet List of Characters that define our language
-   * @return the created LanguageParameter
+   * @param alphabet a List of Characters that define our language
+   * @return the created {@link LanguageParameter}
    */
   // Static Factory Methods
   public static LanguageParameter createLanguageParametersFromAlphabet(List<Character> alphabet) {
@@ -46,9 +46,9 @@ public class LanguageParameterFactory {
    * small alphabets.
    *
    * @param mapper   a mapping function that maps all characters in alphabet to an integer in
-   *                 range(0, alphabetSize-1)
-   * @param alphabet a List of Characters that defines our alphabet
-   * @return the created LanguageParameter
+   *                 range(0, alphabetSize-1).
+   * @param alphabet a list of characters that defines our alphabet
+   * @return the created {@link LanguageParameter}
    */
   public static LanguageParameter createLanguageParametersFromParams(
       Function<Character, Integer> mapper, List<Character> alphabet) {
@@ -62,8 +62,8 @@ public class LanguageParameterFactory {
    * contain all characters in the alphabet. In general, it is discouraged to use this method for a
    * more general case.
    *
-   * @param wordSample List of Strings, a set of sample words of our language
-   * @return the LanguageParameter created
+   * @param wordSample a list of Strings, a set of sample words of our language
+   * @return the created {@link LanguageParameter}
    */
   public static LanguageParameter createLanguageParametersFromKeys(List<String> wordSample) {
     //First get the five characters and build a mapper from the chars to 0-4

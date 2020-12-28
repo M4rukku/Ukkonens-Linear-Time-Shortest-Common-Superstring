@@ -88,7 +88,7 @@ public class ACTrieNode {
   /**
    * Utility method that returns all (even null) successors in the AC-Trie.
    *
-   * @return List[ACTrieNode] a list of all successor tree nodes.
+   * @return List[ACTrieNode] a list of all successor tree nodes
    */
   public List<ACTrieNode> getSuccessorNodes() {
     return successorNodes;
@@ -122,8 +122,6 @@ public class ACTrieNode {
     return dfaTransitions;
   }
 
-  //Utility method that says whether node is a leaf in the ac_string_matcher.AhoCorasick Trie
-  // different from end of word!
 
   protected boolean leafComputed = false;
   protected boolean leaf = false;
@@ -131,7 +129,7 @@ public class ACTrieNode {
   /**
    * Utility method that returns whether the node is a leaf in the Aho-Corasick Trie.
    *
-   * @return Boolean is leaf in AC Graph
+   * @return Boolean - true if node is leaf in AC Graph
    */
   public boolean isLeafInAhoCorasickGraph() {
     if (leafComputed) {

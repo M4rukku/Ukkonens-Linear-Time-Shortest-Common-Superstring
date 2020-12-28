@@ -25,7 +25,7 @@ public class AhoCorasickTrieFactory {
    * @param keys       List of Strings - the keys we want to use to build the {@link
    *                   AhoCorasickTrie}
    * @param parameters a {@link LanguageParameter} defining the language used for the keys
-   * @return the new AhoCorasickTrie
+   * @return the new {@link AhoCorasickTrie}
    */
   public static AhoCorasickTrie<ACTrieNode> createAhoCorasickTrieFromParams(List<String> keys,
       LanguageParameter parameters) {
@@ -41,9 +41,9 @@ public class AhoCorasickTrieFactory {
    *                   AhoCorasickTrie}
    * @param parameters a {@link LanguageParameter} defining the language used for the keys
    * @param factory    An implementation of {@link AbstractACNodeFactory} defining the creation of
-   *                   new nodes.
+   *                   new nodes
    * @param <T>        The node type created by the factory.
-   * @return the new AhoCorasickTrie
+   * @return the new {@link AhoCorasickTrie}
    */
   public static <T extends ACTrieNode> AhoCorasickTrie<T>
       createAhoCorasickTrieFromParamsWithNodeFactory(

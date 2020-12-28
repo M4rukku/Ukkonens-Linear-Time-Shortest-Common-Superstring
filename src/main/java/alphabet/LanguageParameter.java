@@ -8,7 +8,7 @@ package alphabet;
 import java.util.List;
 import java.util.function.Function;
 
-/*
+/**
  * Stores global language parameters (alphabet characters, mapping function) needed in both
  * AhoCorasick and Ukkonen's Algorithm.
  *

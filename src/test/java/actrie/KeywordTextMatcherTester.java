@@ -14,9 +14,10 @@ import java.util.Set;
 import org.junit.Test;
 
 /**
+ * Tests whether the KeywordTextMatcher finds all matches in a sample text body.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class KeywordTextMatcherTester {
 

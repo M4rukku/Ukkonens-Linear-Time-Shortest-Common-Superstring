@@ -17,11 +17,12 @@ import org.junit.Test;
 import trienodes.ACTrieNode;
 
 /**
+ * Tests AhoCorasickTrie for correctness.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
-public class AhoCorasicTrieTester {
+public class AhoCorasickTrieTester {
 
   //Thanks for the inspiration for this example:
   // https://staff.fmi.uvt.ro/~mircea.marin/lectures/ADS/StringMatching.pdf

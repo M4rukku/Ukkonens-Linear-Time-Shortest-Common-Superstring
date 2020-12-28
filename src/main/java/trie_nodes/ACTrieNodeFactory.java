@@ -10,8 +10,8 @@ import alphabet.LanguageParameters;
 /**
  * The default ACTrieNodeFactory which generates standard {@link ACTrieNode}s.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class ACTrieNodeFactory implements AbstractACNodeFactory<ACTrieNode> {
 

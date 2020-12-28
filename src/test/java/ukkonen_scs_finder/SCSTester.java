@@ -7,7 +7,7 @@ package ukkonen_scs_finder;
 
 import alphabet.LanguageParameterFactory;
 import java.util.List;
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 
 /**
  *
@@ -18,9 +18,9 @@ public class SCSTester {
 
   int totalSize = 0;
   List<String> testKeys;
-  LanguageParameters params;
+  LanguageParameter params;
 
-  private SCSTester(int numTestCases, LanguageParameters params, int minStringLength,
+  private SCSTester(int numTestCases, LanguageParameter params, int minStringLength,
       int maxStringLength) {
     this.params = params;
     testKeys = RandomStringGenerator
@@ -44,7 +44,7 @@ public class SCSTester {
     return true;
   }
 
-  public static boolean testRandomlyGeneratedSCS(int numTestCases, LanguageParameters params,
+  public static boolean testRandomlyGeneratedSCS(int numTestCases, LanguageParameter params,
       int minStringLength, int maxStringLength) {
 
     SCSTester tester = new SCSTester(numTestCases, params, minStringLength, maxStringLength);

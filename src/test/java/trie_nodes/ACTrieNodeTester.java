@@ -8,8 +8,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import alphabet.LanguageParameterFactory;
-import alphabet.LanguageParameters;
-import org.junit.BeforeClass;
+import alphabet.LanguageParameter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -30,7 +29,7 @@ public class ACTrieNodeTester {
   public void is_leaf_in_ac_graph_checker_works(){
     //Arrange
     ACTrieNodeFactory factory = new ACTrieNodeFactory();
-    LanguageParameters parameters = LanguageParameterFactory.defaultParameter;
+    LanguageParameter parameters = LanguageParameterFactory.defaultParameter;
     root = factory.createFromDefaultValues(parameters, false, '$');
 
     //he her it

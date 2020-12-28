@@ -9,7 +9,7 @@ package ukkonen_scs_finder;
 import ac_string_matcher.AhoCorasickTrie;
 import ac_string_matcher.AhoCorasickTrieFactory;
 import alphabet.LanguageParameterFactory;
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -81,7 +81,7 @@ public class UkkonensSCSFinder {
    */
   private List<Integer> lastStringInComponent;
 
-  private UkkonensSCSFinder(List<String> keys, LanguageParameters params) {
+  private UkkonensSCSFinder(List<String> keys, LanguageParameter params) {
     this.keys = keys;
 
     //Inject the UkkonenTrieNodeFactory instead of the ACTrieNodeFactory
@@ -115,7 +115,7 @@ public class UkkonensSCSFinder {
 
   /**
    * Creates an UkkonenSCSFinder from the list of words for which we want to generate an approximate
-   * SCS. The {@link LanguageParameters} will be automatically generated from the keys. See {@link
+   * SCS. The {@link LanguageParameter} will be automatically generated from the keys. See {@link
    * LanguageParameterFactory}.
    *
    * @param keys a list of strings for which we want to generate a SCS
@@ -134,7 +134,7 @@ public class UkkonensSCSFinder {
    * @param params language paramters that define the language of the words used in keys
    * @return an instance of UkkonensSCSFinder for our parameters
    */
-  public static UkkonensSCSFinder createFromParams(List<String> keys, LanguageParameters params) {
+  public static UkkonensSCSFinder createFromParams(List<String> keys, LanguageParameter params) {
     return new UkkonensSCSFinder(keys, params);
   }
 

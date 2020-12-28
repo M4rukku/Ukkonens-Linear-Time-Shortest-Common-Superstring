@@ -5,9 +5,7 @@
 
 package trie_nodes;
 
-import alphabet.LanguageParameters;
-import trie_nodes.AbstractACNodeFactory;
-import trie_nodes.UkkonenTrieNode;
+import alphabet.LanguageParameter;
 
 /**
  * Creates {@link UkkonenTrieNode}s, which support the implementation details needed for Ukkonens
@@ -22,7 +20,7 @@ public class UkkonenTrieNodeFactory implements AbstractACNodeFactory<UkkonenTrie
    * A simple factory method that takes a set of default parameters and then returns a new Suffix
    * Trie Node supporting Ukkonens' Algorithm based on it.
    *
-   * @param parameters  The {@link LanguageParameters} that define our underlying Alphabet
+   * @param parameters  The {@link LanguageParameter} that define our underlying Alphabet
    * @param isEndOfWord Boolean -Indicates whether this Suffix Trie Node represents the end of a
    *                    word
    * @param parentChar  Character - tells us which character leads to this node from the parent
@@ -30,7 +28,7 @@ public class UkkonenTrieNodeFactory implements AbstractACNodeFactory<UkkonenTrie
    */
   @Override
   public UkkonenTrieNode createFromDefaultValues(
-      LanguageParameters parameters, boolean isEndOfWord, Character parentChar) {
+      LanguageParameter parameters, boolean isEndOfWord, Character parentChar) {
     return new UkkonenTrieNode(parameters, isEndOfWord, parentChar);
   }
 }

@@ -5,7 +5,7 @@
 
 package trie_nodes;
 
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class ACTrieNode {
 
-  public LanguageParameters parameters;
+  public LanguageParameter parameters;
   protected List<ACTrieNode> successorNodes; //Null means we need to check Fail
   protected ACTrieNode fail;
 
@@ -29,8 +29,8 @@ public class ACTrieNode {
   public List<String> output = new ArrayList<>();
 
 
-  protected ACTrieNode(LanguageParameters parameters, boolean isEndOfWord, char pch) {
-    int alphabetSize = parameters.getSize();
+  protected ACTrieNode(LanguageParameter parameters, boolean isEndOfWord, char pch) {
+    int alphabetSize = parameters.getAlphabetSize();
     this.parameters = parameters;
 
     this.successorNodes = new ArrayList<>(alphabetSize);

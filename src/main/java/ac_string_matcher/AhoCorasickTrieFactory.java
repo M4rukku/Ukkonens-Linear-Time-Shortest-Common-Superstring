@@ -6,7 +6,7 @@
 package ac_string_matcher;
 
 import alphabet.LanguageParameterFactory;
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 import java.util.List;
 import trie_nodes.ACTrieNode;
 import trie_nodes.ACTrieNodeFactory;
@@ -21,14 +21,14 @@ public class AhoCorasickTrieFactory {
 
   //Default ACTNodes
   public static AhoCorasickTrie<ACTrieNode> createAhoCorasickTrieFromParams(List<String> keys,
-      LanguageParameters parameters) {
+      LanguageParameter parameters) {
     return new AhoCorasickTrie<>(keys, parameters, new ACTrieNodeFactory());
   }
 
   //Custom Class Nodes
   public static <T extends ACTrieNode> AhoCorasickTrie<T> createAhoCorasickTrieFromParamsWithNodeFactory(
       List<String> keys,
-      LanguageParameters parameters, AbstractACNodeFactory<T> factory) {
+      LanguageParameter parameters, AbstractACNodeFactory<T> factory) {
     return new AhoCorasickTrie<>(keys, parameters, factory);
   }
 

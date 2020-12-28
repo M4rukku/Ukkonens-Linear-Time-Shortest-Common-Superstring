@@ -5,7 +5,7 @@
 
 package ukkonen_scs_finder;
 
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class RandomStringGenerator {
 
-  public static List<String> generateRandomStrings(LanguageParameters params,
+  public static List<String> generateRandomStrings(LanguageParameter params,
       int numStringsToGenerate, int minStringLength, int maxStringLength) {
 
     List<Character> alphabet = params.getAlphabet();

@@ -5,11 +5,9 @@
 
 package trie_nodes;
 
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import trie_nodes.ACTrieNode;
-import trie_nodes.AbstractACNodeFactory;
 
 /**
  * A very powerful factory that can create any type of TrieNode which extends ACTrieNode using
@@ -36,7 +34,7 @@ public class ClassTypeNodeFactory<T extends ACTrieNode> implements
    */
   public ClassTypeNodeFactory(Class<T> nodeType) throws NoSuchMethodException {
     Class<?>[] classes = new Class[3];
-    classes[0] = LanguageParameters.class;
+    classes[0] = LanguageParameter.class;
     classes[1] = boolean.class;
     classes[2] = char.class;
 
@@ -47,7 +45,7 @@ public class ClassTypeNodeFactory<T extends ACTrieNode> implements
    * A simple factory method that takes a set of default parameters and then returns a new Suffix
    * Trie Node of a custom type based on it.
    *
-   * @param parameters  The {@link LanguageParameters} that define our underlying Alphabet
+   * @param parameters  The {@link LanguageParameter} that define our underlying Alphabet
    * @param isEndOfWord Boolean - Indicates whether this Suffix Trie Node represents the end of a
    *                    word
    * @param parentChar  Character - that tells us the character of our parent
@@ -55,7 +53,7 @@ public class ClassTypeNodeFactory<T extends ACTrieNode> implements
    */
   @Override
   public T createFromDefaultValues(
-      LanguageParameters parameters, boolean isEndOfWord, Character parentChar) {
+      LanguageParameter parameters, boolean isEndOfWord, Character parentChar) {
     try {
       return nodeConstructor.newInstance(parameters, isEndOfWord, parentChar);
     } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {

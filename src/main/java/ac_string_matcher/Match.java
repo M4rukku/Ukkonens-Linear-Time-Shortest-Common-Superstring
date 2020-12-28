@@ -8,15 +8,24 @@ package ac_string_matcher;
 import java.util.Objects;
 
 /**
+ * A way to report matches found in a string. It defines where and which word was matched.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class Match {
 
   public String word;
-  public int startPosition, endPosition;
+  public int startPosition;
+  public int endPosition;
 
+  /**
+   * Creates a new Match Object based on Parameters.
+   *
+   * @param word the String matched
+   * @param startPosition the position where the word occured in the text
+   * @param endPosition where the word ends in the text
+   */
   public Match(String word, int startPosition, int endPosition) {
     this.word = word;
     this.startPosition = startPosition;
@@ -32,9 +41,9 @@ public class Match {
       return false;
     }
     Match match = (Match) o;
-    return startPosition == match.startPosition &&
-               endPosition == match.endPosition &&
-               word.equals(match.word);
+    return startPosition == match.startPosition
+               && endPosition == match.endPosition
+               && word.equals(match.word);
   }
 
   @Override

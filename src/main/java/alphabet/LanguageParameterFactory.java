@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 /**
  * Factory to create LanguageParameters.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class LanguageParameterFactory {
 

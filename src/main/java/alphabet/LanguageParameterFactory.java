@@ -42,7 +42,8 @@ public class LanguageParameterFactory {
   /**
    * Static Factory method that creates a language based on the alphabet, and a mapper function.
    * This is preferred to createLanguageParametersFromAlphabet whenever there is a simple mapping
-   * function (i.e. character - 'a') that is fast to calculate.
+   * function (i.e. character - 'a') that is fast to calculate. This is especially important for
+   * small alphabets.
    *
    * @param mapper   a mapping function that maps all characters in alphabet to an integer in
    *                 range(0, alphabetSize-1)

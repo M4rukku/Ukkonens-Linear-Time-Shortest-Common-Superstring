@@ -13,8 +13,8 @@ import trie_nodes.UkkonenTrieNode;
  * Creates {@link UkkonenTrieNode}s, which support the implementation details needed for Ukkonens
  * Linear Time SCS Finder.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class UkkonenTrieNodeFactory implements AbstractACNodeFactory<UkkonenTrieNode> {
 

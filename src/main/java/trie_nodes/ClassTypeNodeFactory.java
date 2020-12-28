@@ -17,8 +17,8 @@ import trie_nodes.AbstractACNodeFactory;
  * constructor and then the factory will generate the node iff, the node constructor is of the form
  * [LanguageParameters, Boolean, Character].
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  */
 public class ClassTypeNodeFactory<T extends ACTrieNode> implements
     AbstractACNodeFactory<T> {

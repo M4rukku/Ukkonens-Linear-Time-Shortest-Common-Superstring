@@ -28,9 +28,9 @@ import trie_nodes.UkkonenTrieNodeFactory;
  * keys via a greedy heuristic. This path corresponds to an approximate SCS. We compute the greedy
  * heuristic fast using the AhoCorasick String Matcher.
  *
- * <p>Example Usage:
- * List[String] keys = List.of("aki", "ele", "kiki", "kira", "lea"); UkkonensSCSFinder finder =
- * UkkonensSCSFinder.createFromKeys(keys); String scs = finder.getSCS();
+ * <p>Example Usage: <br>
+ * List[String] keys = List.of("aki", "ele", "kiki", "kira", "lea"); <br>UkkonensSCSFinder finder =
+ * UkkonensSCSFinder.createFromKeys(keys); <br>String scs = finder.getSCS();
  *
  * <p>Some Notes on the Implementation and the Algorithm:
  *
@@ -38,23 +38,10 @@ import trie_nodes.UkkonenTrieNodeFactory;
  * algorithm scales badly in terms of space for large alphabets. (One can try to change ACTrieNode
  * to use Maps with defaults instead.)
  *
- * <p>The basic idea of Ukkonens Algorithm is defined in the following Theorem: Let strings xi and
- * xj be in R and let xi represent state s. The maximal overlap between xi and xj is of length k if
- * and only if k = d (t) where t is the first state on the failure transition path from s such that
- * j is in L(t).
- *
- * <p>Theorem 4 suggests how the greedy heuristics can be implemented using the AC machine. To find
- * the pairwise overlaps in descending order, follow all failure paths starting from the states
- * represented by the strings in R. All paths have to be followed simultaneously and the longest
- * available overlap has to be selected at each stage. This suggests an implementation as follows.
- * Traverse the states of the AC machine in reversed breadth-first order. At each state we have to
- * know which of the failure paths pass through that state. Each passing path represents an overlap.
- * Choose any overlap that is not forbidden by earlier selections.
- *
  * <p>The algorithm is described in detail here: https://link.springer.com/article/10.1007/BF01840391.
  *
- * @author : Markus Walder
- * @since : 26.12.2020, Sa.
+ * @author Markus Walder
+ * @since 26.12.2020, Sa.
  **/
 public class UkkonensSCSFinder {
 

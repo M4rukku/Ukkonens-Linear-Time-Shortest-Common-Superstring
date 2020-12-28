@@ -5,7 +5,7 @@
 
 package trie_nodes;
 
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 
 /**
  * The {@link AbstractACNodeFactory} defines the interface NodeFactories need to implement in order
@@ -25,12 +25,12 @@ public interface AbstractACNodeFactory<T extends ACTrieNode> {
    * A simple factory method that takes a set of default parameters and then returns a new Suffix
    * Trie Node based on it.
    *
-   * @param parameters  The {@link LanguageParameters} that define our underlying Alphabet
+   * @param parameters  The {@link LanguageParameter} that define our underlying Alphabet
    * @param isEndOfWord Boolean - Indicates whether this Suffix Trie Node represents the end of a
    *                    word
    * @param parentChar  Character - tells us which character leads to this node from the parent
    * @return Returns a new Trie Node
    */
   T createFromDefaultValues(
-      LanguageParameters parameters, boolean isEndOfWord, Character parentChar);
+      LanguageParameter parameters, boolean isEndOfWord, Character parentChar);
 }

@@ -5,7 +5,7 @@
 
 package ac_string_matcher;
 
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.List;
 import trie_nodes.ACTrieNode;
@@ -21,7 +21,7 @@ public class StringDictionaryMatcher<T extends ACTrieNode> {
 
   private AhoCorasickTrie<T> stringMatcher;
 
-  private StringDictionaryMatcher(LanguageParameters parameters, List<String> dictionary,
+  private StringDictionaryMatcher(LanguageParameter parameters, List<String> dictionary,
       AbstractACNodeFactory<T> factory) {
     stringMatcher = AhoCorasickTrieFactory
                         .createAhoCorasickTrieFromParamsWithNodeFactory(dictionary, parameters,
@@ -30,13 +30,13 @@ public class StringDictionaryMatcher<T extends ACTrieNode> {
   }
 
   public static StringDictionaryMatcher<ACTrieNode> createFromParameters(
-      LanguageParameters parameters,
+      LanguageParameter parameters,
       List<String> dictionary) {
     return new StringDictionaryMatcher<>(parameters, dictionary, new ACTrieNodeFactory());
   }
 
   public static <E extends ACTrieNode> StringDictionaryMatcher<E> createFromParametersWithCustomNodeFactory(
-      LanguageParameters parameters, List<String> dictionary, AbstractACNodeFactory<E> factory) {
+      LanguageParameter parameters, List<String> dictionary, AbstractACNodeFactory<E> factory) {
     return new StringDictionaryMatcher<>(parameters, dictionary, factory);
   }
 

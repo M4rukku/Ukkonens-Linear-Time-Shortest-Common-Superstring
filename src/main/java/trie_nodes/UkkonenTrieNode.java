@@ -5,7 +5,7 @@
 
 package trie_nodes;
 
-import alphabet.LanguageParameters;
+import alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -35,7 +35,7 @@ public class UkkonenTrieNode extends ACTrieNode {
    */
   public LinkedList<Integer> pCandidate = new LinkedList<>();
 
-  protected UkkonenTrieNode(LanguageParameters parameters, boolean isEndOfWord, char pch) {
+  protected UkkonenTrieNode(LanguageParameter parameters, boolean isEndOfWord, char pch) {
     super(parameters, isEndOfWord, pch);
     supportedKeys = new ArrayList<>();
   }

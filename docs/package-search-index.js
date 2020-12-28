@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"actrie"},{"l":"All Packages","url":"allpackages-index.html"},{"l":"alphabet"},{"l":"trienodes"},{"l":"ukkonenscsfinder"}]

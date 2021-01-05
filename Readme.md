@@ -23,15 +23,21 @@ Cheers, M4rukku
      LanguageParameterFactory.defaultParameter, keys); 
  List<Match> matches = matcher.matchText(text); 
  ```
+ 
+## A quick intro to Language Parameters
+
+The class LanguageParameter is a utility class which encodes language information. In particular, it stores the characters that embody the alphabet, as well as a mapper function between the characters inside and the integers from 0 (inclusive) to the alphabet size (exclusive). We need this mapping function because our nodes have a "goto" function that is basically an array linking our current nodes with successor nodes. The successor node in the trie for character c can be found by accessing gotoArray(mapped(c)). In the aftermath, it might have been easier to replace the array with a HashMap, but for small alphabets an array encoding is faster. Nonetheless, the LanguageParameter class pops-up all over the place in my implementation; so it is important to be aware of it.
+<br><br>
 **Create a new LanguageParameter: (from Alphabet alone)**
 ```java
 private static final List<Character> lowerCaseEnglishAlphabet =
       "abcdefghijklmnopqrstuvwxyz".chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+      
 LanguageParameter englishLowerCaseLanguageParameter =
-       LanguageParameterFactory.createLanguageParametersFromAlphabet(lowerCaseEnglishAlphabet); <br>
+       LanguageParameterFactory.createLanguageParametersFromAlphabet(lowerCaseEnglishAlphabet);
 ```
 
- **Create a new LanguageParameter: (from Alphabet + Custom Mapping Function)** <br>
+ **Create a new LanguageParameter: (from Alphabet + Custom Mapping Function)** 
 ```java
 LanguageParameter englishLowerCaseLanguageParameter =
     LanguageParameterFactory.createLanguageParametersFromParams(myChar -> (int) (myChar - 'a'), lowerCaseEnglishAlphabet);

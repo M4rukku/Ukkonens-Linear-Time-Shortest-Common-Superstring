@@ -1,3 +1,8 @@
+/*
+ *  Copyright (c) MIT License
+ *  2020, Markus Walder (https://github.com/M4rukku)
+ */
+
 package ac_string_matcher;
 
 import static org.junit.Assert.assertEquals;

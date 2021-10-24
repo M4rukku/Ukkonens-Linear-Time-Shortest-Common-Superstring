@@ -1,4 +1,9 @@
-package utilities;
+/*
+ *  Copyright (c) MIT License
+ *  2020, Markus Walder (https://github.com/M4rukku)
+ */
+
+package ukkonen_scs_finder;
 
 import alphabet.LanguageParameters;
 import java.util.ArrayList;

@@ -1,3 +1,8 @@
+/*
+ *  Copyright (c) MIT License
+ *  2020, Markus Walder (https://github.com/M4rukku)
+ */
+
 package ukkonen_scs_finder;
 
 import ac_string_matcher.AhoCorasickTrie;
@@ -10,6 +15,14 @@ import java.util.stream.Collectors;
 import alphabet.LanguageParameters;
 import trie_nodes.UkkonenTrieNodeFactory;
 
+/*
+An implementation of Esko Ukkonen's linear time algorithm for finding approximate shortest common
+superstrings. It tries to find the longest Hamiltonian Path in the weighted overlap graph of our
+keys via a greedy heuristic. This path corresponds to an approximate SCS. We compute the greedy
+heuristic fast using the AhoCorasick String Matcher.
+
+The algorithm is described in detail here: https://link.springer.com/article/10.1007/BF01840391.
+ */
 public class UkkonensSCSFinder {
 
   UkkonenTrieNode rootNode;
@@ -17,8 +30,8 @@ public class UkkonensSCSFinder {
   List<UkkonenTrieNode> allNodes;
 
   private List<String> keys;
-  List<UkkonenTrieNode> stringIndexToEndNodes;
-  Map<UkkonenTrieNode, Integer> endNodesToStringIndex;
+  private List<UkkonenTrieNode> stringIndexToEndNodes;
+  private Map<UkkonenTrieNode, Integer> endNodesToStringIndex;
 
   //Keep track of Hamilton Path Building
   private List<Boolean> forbidden;
@@ -28,9 +41,8 @@ public class UkkonensSCSFinder {
 
   private UkkonensSCSFinder(List<String> keys, LanguageParameters params) {
     this.keys = keys;
-    //Inject the UkkonenTrieNodeFactory instead of the ACTrieNode
-    // ones to get full control of the type of nodes constructed
 
+    //Inject the UkkonenTrieNodeFactory instead of the ACTrieNodeFactory
     AhoCorasickTrie<UkkonenTrieNode> newTrie =
         AhoCorasickTrieFactory
             .createAhoCorasickTrieFromParamsWithNodeFactory(
@@ -68,11 +80,11 @@ public class UkkonensSCSFinder {
   }
 
   private void preprocessTrie() {
-    endNodesToStringIndex.put(rootNode, -1); //TODO Check
+    //Reduces Graph, Sets up the supported keys of all the nodes (stores how many strings are
+    // dependent on the node -- have a prefix of the substring represented by the node)
     for (int i = 0; i < keys.size(); i++) {
       UkkonenTrieNode state = rootNode;
       rootNode.supportedKeys.add(i);
-
       char[] currentString = keys.get(i).toCharArray();
 
       for (int j = 0; j < currentString.length; j++) {
@@ -83,7 +95,10 @@ public class UkkonensSCSFinder {
         if (j == (currentString.length - 1)) {
           stringIndexToEndNodes.set(i, state);
           endNodesToStringIndex.put(state, i);
+
           if (!state.isLeafInAhoCorasickGraph()) {
+            //remove node from graph if it is not a leaf
+            //graph reduction
             stringIndexToEndNodes.set(i, rootNode);
           }
         }
@@ -108,8 +123,7 @@ public class UkkonensSCSFinder {
         nextState.bfsSuccessor = firstNodeInReverseBFSOrder;
         firstNodeInReverseBFSOrder = nextState;
 
-        if (endNodesToStringIndex.containsKey(nextState.getFail())) //TODO
-        {
+        if (endNodesToStringIndex.containsKey(nextState.getFail())) {
           stringIndexToEndNodes.set(endNodesToStringIndex.get(nextState.getFail()), rootNode);
         }
       }
@@ -127,8 +141,7 @@ public class UkkonensSCSFinder {
       }
     }
 
-    UkkonenTrieNode currentState = firstNodeInReverseBFSOrder; //TODO Check this
-
+    UkkonenTrieNode currentState = firstNodeInReverseBFSOrder;
     while (currentState != rootNode) {
       if (!currentState.pCandidate.isEmpty()) {
         for (int index : currentState.supportedKeys) {
@@ -183,7 +196,7 @@ public class UkkonensSCSFinder {
     for (int startEdge : edgesWithNoIncomingPaths) {
       totalComp++;
       List<Integer> component = new ArrayList<>();
-      String str = comptoString(allEdges, startEdge, component);
+      String str = compToString(allEdges, startEdge, component);
       builder.append(str);
     }
 
@@ -201,7 +214,7 @@ public class UkkonensSCSFinder {
     return builder.toString();
   }
 
-  public String comptoString(Map<Integer, Edge<Integer, Integer>> allEdges, Integer startNode,
+  public String compToString(Map<Integer, Edge<Integer, Integer>> allEdges, Integer startNode,
       List<Integer> component) {
     StringBuilder builder = new StringBuilder();
     Edge<Integer, Integer> currentEdge = allEdges.get(startNode);

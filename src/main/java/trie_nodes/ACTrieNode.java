@@ -1,3 +1,8 @@
+/*
+ *  Copyright (c) MIT License
+ *  2020, Markus Walder (https://github.com/M4rukku)
+ */
+
 package trie_nodes;
 
 import alphabet.LanguageParameters;
@@ -69,7 +74,7 @@ public class ACTrieNode {
     dfaTransitions.set(parameters.map(input), node);
   }
 
-  public List<ACTrieNode> getAllPossibleDFATransitions(){
+  public List<ACTrieNode> getAllPossibleDFATransitions() {
     return dfaTransitions;
   }
 

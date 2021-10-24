@@ -3,12 +3,12 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package trienodes;
+package org.marukku.ukkonenscs.trienodes;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import alphabet.LanguageParameterFactory;
-import alphabet.LanguageParameter;
+import org.marukku.ukkonenscs.alphabet.LanguageParameterFactory;
+import org.marukku.ukkonenscs.alphabet.LanguageParameter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

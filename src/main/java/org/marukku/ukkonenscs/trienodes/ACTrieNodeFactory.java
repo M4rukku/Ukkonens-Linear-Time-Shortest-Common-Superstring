@@ -3,9 +3,9 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package trienodes;
+package org.marukku.ukkonenscs.trienodes;
 
-import alphabet.LanguageParameter;
+import org.marukku.ukkonenscs.alphabet.LanguageParameter;
 
 /**
  * The default ACTrieNodeFactory which generates standard {@link ACTrieNode}s.

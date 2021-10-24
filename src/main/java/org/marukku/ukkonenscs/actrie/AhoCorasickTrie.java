@@ -3,15 +3,15 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package actrie;
+package org.marukku.ukkonenscs.actrie;
 
-import alphabet.LanguageParameter;
+import org.marukku.ukkonenscs.alphabet.LanguageParameter;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import trienodes.ACTrieNode;
-import trienodes.AbstractACNodeFactory;
+import org.marukku.ukkonenscs.trienodes.ACTrieNode;
+import org.marukku.ukkonenscs.trienodes.AbstractACNodeFactory;
 
 
 /**

@@ -3,17 +3,17 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ukkonenscsfinder;
+package org.marukku.ukkonenscs.ukkonenscsfinder;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import alphabet.LanguageParameterFactory;
+import org.marukku.ukkonenscs.alphabet.LanguageParameterFactory;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.junit.Test;
-import trienodes.UkkonenTrieNode;
+import org.marukku.ukkonenscs.trienodes.UkkonenTrieNode;
 
 /**
  * Tests {@link UkkonenSCSFinder} for any problems.

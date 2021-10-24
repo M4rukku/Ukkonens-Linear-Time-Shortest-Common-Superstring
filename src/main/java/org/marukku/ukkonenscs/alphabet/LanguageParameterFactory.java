@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package alphabet;
+package org.marukku.ukkonenscs.alphabet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class LanguageParameterFactory {
 
   /**
-   * Static factory method that creates a language based on the alphabet alone. It will generate a
+   * Static factory method that creates a language based on the org.marukku.ukkonenscs.alphabet alone. It will generate a
    * mapping function using a HashMap.
    *
    * @param alphabet a List of Characters that define our language
@@ -40,14 +40,14 @@ public class LanguageParameterFactory {
   }
 
   /**
-   * Static Factory method that creates a language based on the alphabet, and a mapper function.
+   * Static Factory method that creates a language based on the org.marukku.ukkonenscs.alphabet, and a mapper function.
    * This is preferred to createLanguageParametersFromAlphabet whenever there is a simple mapping
    * function (i.e. character - 'a') that is fast to calculate. This is especially important for
    * small alphabets.
    *
-   * @param mapper   a mapping function that maps all characters in alphabet to an integer in
+   * @param mapper   a mapping function that maps all characters in org.marukku.ukkonenscs.alphabet to an integer in
    *                 range(0, alphabetSize-1).
-   * @param alphabet a list of characters that defines our alphabet
+   * @param alphabet a list of characters that defines our org.marukku.ukkonenscs.alphabet
    * @return the created {@link LanguageParameter}
    */
   public static LanguageParameter createLanguageParametersFromParams(
@@ -57,9 +57,9 @@ public class LanguageParameterFactory {
 
   /**
    * Static factory method that creates a {@link LanguageParameter} based on the sample of words we
-   * give it. It extracts the characters of the alphabet by iterating over all characters used in
+   * give it. It extracts the characters of the org.marukku.ukkonenscs.alphabet by iterating over all characters used in
    * wordSample. Attention is needed when using this method because it requires the wordSample to
-   * contain all characters in the alphabet. In general, it is discouraged to use this method for a
+   * contain all characters in the org.marukku.ukkonenscs.alphabet. In general, it is discouraged to use this method for a
    * more general case.
    *
    * @param wordSample a list of Strings, a set of sample words of our language
@@ -86,7 +86,7 @@ public class LanguageParameterFactory {
       "abcdefghijklmnopqrstuvwxyz".chars().mapToObj(c -> (char) c).collect(Collectors.toList());
 
   /**
-   * The default language defining the lower case English alphabet "abc...xyz".
+   * The default language defining the lower case English org.marukku.ukkonenscs.alphabet "abc...xyz".
    */
   public static LanguageParameter defaultParameter =
       new LanguageParameter(26, myChar -> myChar - 'a', lowerCaseStandardAlphabet);

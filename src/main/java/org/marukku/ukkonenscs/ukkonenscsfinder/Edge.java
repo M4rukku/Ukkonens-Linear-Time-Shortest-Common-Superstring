@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ukkonenscsfinder;
+package org.marukku.ukkonenscs.ukkonenscsfinder;
 
 /**
  * A helper class representing a weighted edge.

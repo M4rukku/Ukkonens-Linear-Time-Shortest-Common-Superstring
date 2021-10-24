@@ -3,11 +3,11 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ukkonenscsfinder;
+package org.marukku.ukkonenscs.ukkonenscsfinder;
 
-import alphabet.LanguageParameterFactory;
+import org.marukku.ukkonenscs.alphabet.LanguageParameterFactory;
 import java.util.List;
-import alphabet.LanguageParameter;
+import org.marukku.ukkonenscs.alphabet.LanguageParameter;
 
 /**
  * SCSTester is a utility class to help in testing which randomly generates a lot of

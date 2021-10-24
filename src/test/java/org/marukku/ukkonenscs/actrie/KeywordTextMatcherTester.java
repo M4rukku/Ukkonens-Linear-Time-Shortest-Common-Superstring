@@ -3,11 +3,11 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package actrie;
+package org.marukku.ukkonenscs.actrie;
 
 import static org.junit.Assert.assertEquals;
 
-import alphabet.LanguageParameterFactory;
+import org.marukku.ukkonenscs.alphabet.LanguageParameterFactory;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

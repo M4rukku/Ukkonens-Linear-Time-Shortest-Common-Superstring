@@ -3,21 +3,21 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package actrie;
+package org.marukku.ukkonenscs.actrie;
 
-import alphabet.LanguageParameter;
+import org.marukku.ukkonenscs.alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.List;
-import trienodes.ACTrieNode;
+import org.marukku.ukkonenscs.trienodes.ACTrieNode;
 
 /**
- * StringDictionaryMatcher implements the basic use case of the {@link AhoCorasickTrie}. It finds
+ * KeywordTextMatcher implements the basic use case of the {@link AhoCorasickTrie}. It finds
  * all matches of the keywords used in its construction in the text body.
  *
  * <p>Example Usage:
  * <pre>
  *   {@code
- *   StringDictionaryMatcher matcher = StringDictionaryMatcher.createFromParameters(
+ *   KeywordTextMatcher matcher = KeywordTextMatcher.createFromParameters(
  *         LanguageParameterFactory.defaultParameter, dictionary);
  *   List<Match> matches = matcher.matchText(text);
  *   }

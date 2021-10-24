@@ -3,7 +3,7 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package actrie;
+package org.marukku.ukkonenscs.actrie;
 
 import java.util.Objects;
 

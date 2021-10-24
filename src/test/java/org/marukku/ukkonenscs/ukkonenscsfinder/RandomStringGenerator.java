@@ -3,15 +3,15 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package ukkonenscsfinder;
+package org.marukku.ukkonenscs.ukkonenscsfinder;
 
-import alphabet.LanguageParameter;
+import org.marukku.ukkonenscs.alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 /**
- * Statically generates lists of random strings given an alphabet for use in testing..
+ * Statically generates lists of random strings given an org.marukku.ukkonenscs.alphabet for use in testing..
  *
  * @author Markus Walder
  * @since 26.12.2020, Sa.

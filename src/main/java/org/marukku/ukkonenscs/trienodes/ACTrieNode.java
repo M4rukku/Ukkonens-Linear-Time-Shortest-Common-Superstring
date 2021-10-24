@@ -3,9 +3,9 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package trienodes;
+package org.marukku.ukkonenscs.trienodes;
 
-import alphabet.LanguageParameter;
+import org.marukku.ukkonenscs.alphabet.LanguageParameter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  *
  * <p>Note on the implementation: The goto function (successorNodes) maps characters to integers to
  * ACTrieNodes. We do this to make use of fast array access in small alphabets. It scales badly for
- * large alphabets because we need to keep a list the size of the alphabet with each node. It would
+ * large alphabets because we need to keep a list the size of the org.marukku.ukkonenscs.alphabet with each node. It would
  * be more efficient to switch to an implementation based on HashMap[Character, Integer] in such
  * cases.
  *

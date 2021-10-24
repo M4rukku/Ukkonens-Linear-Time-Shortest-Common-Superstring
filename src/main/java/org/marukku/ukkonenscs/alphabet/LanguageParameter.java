@@ -3,13 +3,13 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package alphabet;
+package org.marukku.ukkonenscs.alphabet;
 
 import java.util.List;
 import java.util.function.Function;
 
 /**
- * Stores global language parameters (alphabet characters, mapping function) needed in both
+ * Stores global language parameters (org.marukku.ukkonenscs.alphabet characters, mapping function) needed in both
  * AhoCorasick and Ukkonen's Algorithm.
  *
  * @author Markus Walder
@@ -30,7 +30,7 @@ public class LanguageParameter {
 
   /**
    * map maps an input char to an integer. The mapping function must be injective and map all chars
-   * in alphabet to the integer range (0, alphabetSize-1). We need it to facilitate array access in
+   * in org.marukku.ukkonenscs.alphabet to the integer range (0, alphabetSize-1). We need it to facilitate array access in
    * AC's goto function.
    *
    * @param input Character which we want to map to an int
@@ -42,9 +42,9 @@ public class LanguageParameter {
   }
 
   /**
-   * getAlphabet returns all characters in our alphabet.
+   * getAlphabet returns all characters in our org.marukku.ukkonenscs.alphabet.
    *
-   * @return a list containing all characters of our alphabet
+   * @return a list containing all characters of our org.marukku.ukkonenscs.alphabet
    */
   public List<Character> getAlphabet() {
     return alphabet;

@@ -3,18 +3,18 @@
  *  2020, Markus Walder (https://github.com/M4rukku)
  */
 
-package actrie;
+package org.marukku.ukkonenscs.actrie;
 
 import static org.junit.Assert.assertEquals;
 
-import alphabet.LanguageParameterFactory;
+import org.marukku.ukkonenscs.alphabet.LanguageParameterFactory;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import trienodes.ACTrieNode;
+import org.marukku.ukkonenscs.trienodes.ACTrieNode;
 
 /**
  * Tests AhoCorasickTrie for correctness.
